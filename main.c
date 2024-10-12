@@ -54,15 +54,22 @@ int main()
                             }
 
                             printf("Cadastro de aluno:\n\n");
-                            printf("Matrícula: ");
-                            scanf("%d", &alunos[qtdAlunos].matricula);
 
-                            qtdAlunos++;
+                            int matricula;
+                            printf("Matrícula: ");
+                            scanf("%d", &matricula);
+
+                            if (matricula <= 0) {
+                                printf("Matrícula inválida\n");
+                            } else {
+                                alunos[qtdAlunos].matricula = matricula;
+                                qtdAlunos++;
+                            }
                             break;
                         }
                         case 2: {
                             for (int i = 0; i < qtdAlunos; i++) {
-                                printf("%d\n", alunos[i].matricula);
+                                printf("Matrícula: %d\n", alunos[i].matricula);
                             }
 
                             break;
