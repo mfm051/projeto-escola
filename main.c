@@ -40,6 +40,7 @@ int main()
                     printf("1: cadastrar aluno\n");
                     printf("2: listar alunos\n");
                     printf("3: excluir aluno\n");
+                    printf("4: atualizar aluno\n");
 
                     scanf("%d", &opcaoAluno);
 
@@ -109,6 +110,39 @@ int main()
                                 if (matricula_encontrada)
                                     printf("Aluno excluído com sucesso\n");
                                 else
+                                    printf("Matrícula não encontrada\n");
+                            }
+
+                            break;
+                        }
+                        case 4: {
+                            int matricula;
+                            int matricula_encontrada = 0;
+                            printf("Matrícula: ");
+                            scanf("%d", &matricula);
+
+                            if (matricula <= 0) {
+                                printf("Matrícula inválida\n");
+                            } else {
+                                for (int i = 0; i < qtdAlunos; i++) {
+                                    if (alunos[i].matricula == matricula && alunos[i].ativo) {
+                                        matricula_encontrada = 1;
+
+                                        int nova_matricula;
+                                        printf("Nova matrícula: ");
+                                        scanf("%d", &nova_matricula);
+
+                                        if (nova_matricula <= 0)
+                                            printf("Matrícula inválida\n");
+                                        else {
+                                            alunos[i].matricula = nova_matricula;
+                                            printf("Matrícula atualizada com sucesso\n");
+                                        }
+                                        break;
+                                    }
+                                }
+
+                                if (!matricula_encontrada)
                                     printf("Matrícula não encontrada\n");
                             }
 
