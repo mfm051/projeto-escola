@@ -1,8 +1,0 @@
-modules = ["c-clang14"]
-run = "echo 'Eita...'"
-
-[nix]
-channel = "stable-24_05"
-
-[deployment]
-run = ["sh", "-c", "echo 'Eita...'"]
