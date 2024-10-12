@@ -3,6 +3,7 @@
 
 typedef struct {
     int matricula;
+    int ativo; // 1: ativo, 0: inativo
 } Aluno;
 
 int main()
@@ -38,6 +39,7 @@ int main()
                     printf("0: voltar\n");
                     printf("1: cadastrar aluno\n");
                     printf("2: listar alunos\n");
+                    printf("3: excluir aluno\n");
 
                     scanf("%d", &opcaoAluno);
 
@@ -63,6 +65,7 @@ int main()
                                 printf("Matrícula inválida\n");
                             } else {
                                 alunos[qtdAlunos].matricula = matricula;
+                                alunos[qtdAlunos].ativo = 1;
                                 qtdAlunos++;
                                 printf("Aluno cadastrado com sucesso\n");
                             }
@@ -73,8 +76,40 @@ int main()
                                 printf("Não há alunos cadastrados\n");
                             } else {
                                 for (int i = 0; i < qtdAlunos; i++) {
-                                    printf("Matrícula: %d\n", alunos[i].matricula);
+                                    if (alunos[i].ativo)
+                                        printf("Matrícula: %d\n", alunos[i].matricula);
                                 }
+                            }
+
+                            break;
+                        }
+                        case 3: {
+                            int matricula;
+                            int matricula_encontrada = 0;
+                            printf("Matrícula: ");
+                            scanf("%d", &matricula);
+
+                            if (matricula <= 0) {
+                                printf("Matrícula inválida\n");
+                            } else {
+                                for (int i = 0; i < qtdAlunos; i++) {
+                                    if (alunos[i].matricula == matricula) {
+                                        matricula_encontrada = 1;
+                                        alunos[i].ativo = 0;
+
+                                        for (int j = i; j < qtdAlunos; j++) {
+                                            alunos[j] = alunos[j + 1];
+                                        };
+
+                                        qtdAlunos--;
+                                        break;
+                                    }
+                                }
+
+                                if (matricula_encontrada)
+                                    printf("Aluno excluído com sucesso\n");
+                                else
+                                    printf("Matrícula não encontrada\n");
                             }
 
                             break;
