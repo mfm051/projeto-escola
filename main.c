@@ -68,8 +68,12 @@ int main()
                             break;
                         }
                         case 2: {
-                            for (int i = 0; i < qtdAlunos; i++) {
-                                printf("Matrícula: %d\n", alunos[i].matricula);
+                            if (qtdAlunos == 0) {
+                                printf("Não há alunos cadastrados\n");
+                            } else {
+                                for (int i = 0; i < qtdAlunos; i++) {
+                                    printf("Matrícula: %d\n", alunos[i].matricula);
+                                }
                             }
 
                             break;
