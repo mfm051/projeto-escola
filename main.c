@@ -64,6 +64,7 @@ int main()
                             } else {
                                 alunos[qtdAlunos].matricula = matricula;
                                 qtdAlunos++;
+                                printf("Aluno cadastrado com sucesso\n");
                             }
                             break;
                         }
