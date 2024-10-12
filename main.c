@@ -16,7 +16,7 @@ int main()
     int sair = 0; // falso
 
     while (!sair) {
-        printf("Opções:\n\n");
+        printf("\n\nOpções:\n\n");
         printf("0: sair\n");
         printf("1: aluno\n");
 
@@ -34,9 +34,10 @@ int main()
                 int sairAluno = 0; // falso
 
                 while (!sairAluno) {
-                    printf("Opções Aluno:\n\n");
+                    printf("\n\nOpções Aluno:\n\n");
                     printf("0: voltar\n");
                     printf("1: cadastrar aluno\n");
+                    printf("2: listar alunos\n");
 
                     scanf("%d", &opcaoAluno);
 
@@ -46,7 +47,7 @@ int main()
                             break;
                         }
                         case 1: {
-                            
+
                             if (qtdAlunos == MAX) {
                                 printf("Máximo de alunos atingido\n");
                                 break;
@@ -55,10 +56,19 @@ int main()
                             printf("Cadastro de aluno:\n\n");
                             printf("Matrícula: ");
                             scanf("%d", &alunos[qtdAlunos].matricula);
-                            
+
                             qtdAlunos++;
                             break;
                         }
+                        case 2: {
+                            for (int i = 0; i < qtdAlunos; i++) {
+                                printf("%d\n", alunos[i].matricula);
+                            }
+
+                            break;
+                        }
+                        default:
+                            printf("Opção inválida");
                     }
                 }
                 break;
