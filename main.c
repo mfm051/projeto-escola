@@ -7,7 +7,7 @@ int main() {
     int sair = 0; // falso
 
     while (!sair) {
-        printf("Opções:\n");
+        printf("Opções:\n\n");
         printf("0: sair\n");
         printf("1: aluno\n");
 
@@ -20,6 +20,28 @@ int main() {
             }
             case 1: {
                 printf("Módulo Aluno\n\n");
+
+                int opcaoAluno;
+                int sairAluno = 0; // falso
+
+                while (!sairAluno) {
+                    printf("Opções Aluno:\n\n");
+                    printf("0: voltar\n");
+                    printf("1: cadastrar aluno\n");
+
+                    scanf("%d", &opcaoAluno);
+
+                    switch (opcaoAluno) {
+                        case 0: {
+                            sairAluno = 1;
+                            break;
+                        }
+                        case 1: {
+                            printf("Cadastro de aluno:\n");
+                            break;
+                        }
+                    }
+                }
                 break;
             }
             default:
