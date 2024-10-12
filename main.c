@@ -1,6 +1,15 @@
 #include <stdio.h>
+#define MAX 3
 
-int main() {
+typedef struct {
+    int matricula;
+} Aluno;
+
+int main()
+{
+    Aluno alunos[MAX];
+    int qtdAlunos = 0;
+
     printf("Projeto escola\n\n");
 
     int opcao;
@@ -37,7 +46,17 @@ int main() {
                             break;
                         }
                         case 1: {
-                            printf("Cadastro de aluno:\n");
+                            
+                            if (qtdAlunos == MAX) {
+                                printf("Máximo de alunos atingido\n");
+                                break;
+                            }
+
+                            printf("Cadastro de aluno:\n\n");
+                            printf("Matrícula: ");
+                            scanf("%d", &alunos[qtdAlunos].matricula);
+                            
+                            qtdAlunos++;
                             break;
                         }
                     }
