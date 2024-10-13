@@ -13,6 +13,7 @@ int obtemOpcaoGeral();
 int obtemOpcaoAluno();
 int cadastrarAluno(int qtdAlunos, Aluno alunos[]);
 void listarAlunos(int qtdAlunos, Aluno alunos[]);
+int atualizarAluno(int qtdAlunos, Aluno alunos[]);
 
 int main()
 {
@@ -42,11 +43,11 @@ int main()
                     opcaoAluno = obtemOpcaoAluno();
 
                     switch (opcaoAluno) {
-                        case 0: {
+                        case 0 /* Sair */: {
                             sairAluno = VERDADEIRO;
                             break;
                         }
-                        case 1: {
+                        case 1 /* Cadastrar */: {
                             int cadastroRealizado = cadastrarAluno(qtdAlunos, alunos);
 
                             if (cadastroRealizado) {
@@ -58,11 +59,21 @@ int main()
 
                             break;
                         }
-                        case 2: {
+                        case 2 /* Listar */: {
                             listarAlunos(qtdAlunos, alunos);
                             break;
                         }
-                        case 3: {
+                        case 3 /* Atualizar */: {
+                            int atualizado = atualizarAluno(qtdAlunos, alunos);
+
+                            if (atualizado)
+                                printf("Aluno atualizado com sucesso\n");
+                            else
+                                printf("Atualização não realizada\n");
+
+                            break;
+                        }
+                        case 4: {
                             int matricula;
                             int matricula_encontrada = FALSO;
                             printf("Matrícula: ");
@@ -88,39 +99,6 @@ int main()
                                 if (matricula_encontrada)
                                     printf("Aluno excluído com sucesso\n");
                                 else
-                                    printf("Matrícula não encontrada\n");
-                            }
-
-                            break;
-                        }
-                        case 4: {
-                            int matricula;
-                            int matricula_encontrada = FALSO;
-                            printf("Matrícula: ");
-                            scanf("%d", &matricula);
-
-                            if (matricula <= 0) {
-                                printf("Matrícula inválida\n");
-                            } else {
-                                for (int i = 0; i < qtdAlunos; i++) {
-                                    if (alunos[i].matricula == matricula && alunos[i].ativo) {
-                                        matricula_encontrada = VERDADEIRO;
-
-                                        int nova_matricula;
-                                        printf("Nova matrícula: ");
-                                        scanf("%d", &nova_matricula);
-
-                                        if (nova_matricula <= 0)
-                                            printf("Matrícula inválida\n");
-                                        else {
-                                            alunos[i].matricula = nova_matricula;
-                                            printf("Matrícula atualizada com sucesso\n");
-                                        }
-                                        break;
-                                    }
-                                }
-
-                                if (!matricula_encontrada)
                                     printf("Matrícula não encontrada\n");
                             }
 
@@ -158,8 +136,8 @@ int obtemOpcaoAluno() {
     printf("0: voltar\n");
     printf("1: cadastrar aluno\n");
     printf("2: listar alunos\n");
-    printf("3: excluir aluno\n");
-    printf("4: atualizar aluno\n");
+    printf("3: atualizar aluno\n");
+    printf("4: excluir aluno\n");
 
     scanf("%d", &opcao);
     return opcao;
@@ -199,5 +177,37 @@ void listarAlunos(int qtdAlunos, Aluno alunos[]) {
 }
 
 int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
+    int matricula;
+    int matricula_encontrada = FALSO;
 
+    printf("Matrícula do aluno a ser atualizado: ");
+    scanf("%d", &matricula);
+
+    if (matricula <= 0) {
+        printf("Matrícula inválida\n");
+        return FALSO;
+    }
+    else
+    {
+        for (int i = 0; i < qtdAlunos; i++) {
+            if (alunos[i].matricula == matricula && alunos[i].ativo) {
+                int nova_matricula;
+                printf("Nova matrícula: ");
+                scanf("%d", &nova_matricula);
+
+                if (nova_matricula <= 0) {
+                    printf("Matrícula inválida\n");
+                    return FALSO;
+                }
+                else
+                {
+                    alunos[i].matricula = nova_matricula;
+                    return VERDADEIRO;
+                }
+            }
+        }
+
+        printf("Matrícula não encontrada\n");
+        return FALSO;
+    }
 }
