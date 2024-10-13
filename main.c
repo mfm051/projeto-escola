@@ -131,19 +131,24 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[]) {
     }
 
     int matricula;
-    printf("Nova matrícula de aluno: ");
+    printf("Matrícula do aluno: ");
     scanf("%d", &matricula);
 
     if (matricula <= 0) {
         printf("Matrícula inválida\n");
         return FALSO;
     }
-    else
-    {
-        alunos[qtdAlunos].matricula = matricula;
-        alunos[qtdAlunos].ativo = VERDADEIRO;
-        return VERDADEIRO;
+    
+    for (int i = 0; i < qtdAlunos; i++) {
+        if (alunos[i].matricula == matricula && alunos[i].ativo) {
+            printf("Aluno já cadastrado no sistema\n");
+            return FALSO;
+        }
     }
+
+    alunos[qtdAlunos].matricula = matricula;
+    alunos[qtdAlunos].ativo = VERDADEIRO;
+    return VERDADEIRO;
 }
 
 void listarAlunos(int qtdAlunos, Aluno alunos[]) {
