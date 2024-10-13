@@ -14,6 +14,7 @@ int obtemOpcaoAluno();
 int cadastrarAluno(int qtdAlunos, Aluno alunos[]);
 void listarAlunos(int qtdAlunos, Aluno alunos[]);
 int atualizarAluno(int qtdAlunos, Aluno alunos[]);
+int excluirAluno(int qtdAlunos, Aluno alunos[]);
 
 int main()
 {
@@ -48,9 +49,9 @@ int main()
                             break;
                         }
                         case 1 /* Cadastrar */: {
-                            int cadastroRealizado = cadastrarAluno(qtdAlunos, alunos);
+                            int cadastrado = cadastrarAluno(qtdAlunos, alunos);
 
-                            if (cadastroRealizado) {
+                            if (cadastrado) {
                                 qtdAlunos++;
                                 printf("Aluno cadastrado com sucesso\n");
                             }
@@ -73,34 +74,14 @@ int main()
 
                             break;
                         }
-                        case 4: {
-                            int matricula;
-                            int matricula_encontrada = FALSO;
-                            printf("Matrícula: ");
-                            scanf("%d", &matricula);
+                        case 4 /* Excluir */: {
+                            int excluido = excluirAluno(qtdAlunos, alunos);
 
-                            if (matricula <= 0) {
-                                printf("Matrícula inválida\n");
-                            } else {
-                                for (int i = 0; i < qtdAlunos; i++) {
-                                    if (alunos[i].matricula == matricula) {
-                                        matricula_encontrada = 1;
-                                        alunos[i].ativo = FALSO;
-
-                                        for (int j = i; j < qtdAlunos; j++) {
-                                            alunos[j] = alunos[j + 1];
-                                        };
-
-                                        qtdAlunos--;
-                                        break;
-                                    }
-                                }
-
-                                if (matricula_encontrada)
-                                    printf("Aluno excluído com sucesso\n");
-                                else
-                                    printf("Matrícula não encontrada\n");
-                            }
+                            if (excluido) {
+                                printf("Aluno excluído com sucesso\n");
+                                qtdAlunos--;
+                            } else
+                                printf("Exclusão não realizada\n");
 
                             break;
                         }
@@ -180,7 +161,7 @@ int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
     int matricula;
     int matricula_encontrada = FALSO;
 
-    printf("Matrícula do aluno a ser atualizado: ");
+    printf("Matrícula do aluno: ");
     scanf("%d", &matricula);
 
     if (matricula <= 0) {
@@ -204,6 +185,37 @@ int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
                     alunos[i].matricula = nova_matricula;
                     return VERDADEIRO;
                 }
+            }
+        }
+
+        printf("Matrícula não encontrada\n");
+        return FALSO;
+    }
+}
+
+int excluirAluno(int qtdAlunos, Aluno alunos[]) {
+    int matricula;
+    int matricula_encontrada = FALSO;
+
+    printf("Matrícula do aluno: ");
+    scanf("%d", &matricula);
+
+    if (matricula <= 0) {
+        printf("Matrícula inválida\n");
+        return FALSO;
+    }
+    else
+    {
+        for (int i = 0; i < qtdAlunos; i++) {
+            if (alunos[i].matricula == matricula) {
+                matricula_encontrada = VERDADEIRO;
+                alunos[i].ativo = FALSO;
+
+                for (int j = i; j < qtdAlunos; j++) {
+                    alunos[j] = alunos[j + 1];
+                };
+
+                return VERDADEIRO;
             }
         }
 
