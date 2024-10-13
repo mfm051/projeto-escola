@@ -3,6 +3,7 @@
 
 // Protótipos
 int obtemOpcaoGeral();
+int obtemOpcaoAluno();
 
 typedef struct {
     int matricula;
@@ -34,14 +35,7 @@ int main()
                 int sairAluno = 0; // falso
 
                 while (!sairAluno) {
-                    printf("\n\nOpções Aluno:\n\n");
-                    printf("0: voltar\n");
-                    printf("1: cadastrar aluno\n");
-                    printf("2: listar alunos\n");
-                    printf("3: excluir aluno\n");
-                    printf("4: atualizar aluno\n");
-
-                    scanf("%d", &opcaoAluno);
+                    opcaoAluno = obtemOpcaoAluno();
 
                     switch (opcaoAluno) {
                         case 0: {
@@ -167,6 +161,20 @@ int obtemOpcaoGeral() {
     printf("\n\nOpções:\n\n");
     printf("0: sair\n");
     printf("1: aluno\n");
+
+    scanf("%d", &opcao);
+    return opcao;
+}
+
+int obtemOpcaoAluno() {
+    int opcao;
+
+    printf("\n\nOpções Aluno:\n\n");
+    printf("0: voltar\n");
+    printf("1: cadastrar aluno\n");
+    printf("2: listar alunos\n");
+    printf("3: excluir aluno\n");
+    printf("4: atualizar aluno\n");
 
     scanf("%d", &opcao);
     return opcao;
