@@ -1,6 +1,9 @@
 #include <stdio.h>
 #define MAX 3
 
+// Protótipos
+void imprimeMenuGeral();
+
 typedef struct {
     int matricula;
     int ativo; // 1: ativo, 0: inativo
@@ -17,10 +20,7 @@ int main()
     int sair = 0; // falso
 
     while (!sair) {
-        printf("\n\nOpções:\n\n");
-        printf("0: sair\n");
-        printf("1: aluno\n");
-
+        imprimeMenuGeral();
         scanf("%d", &opcao);
 
         switch (opcao) {
@@ -158,4 +158,12 @@ int main()
                 printf("Opção inválida");
         }
     }
+}
+
+// Funções
+
+void imprimeMenuGeral() {
+    printf("\n\nOpções:\n\n");
+    printf("0: sair\n");
+    printf("1: aluno\n");
 }
