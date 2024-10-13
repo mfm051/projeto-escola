@@ -3,14 +3,15 @@
 #define VERDADEIRO 1
 #define FALSO 0
 
-// Protótipos
-int obtemOpcaoGeral();
-int obtemOpcaoAluno();
-
 typedef struct {
     int matricula;
     int ativo;
 } Aluno;
+
+// Protótipos
+int obtemOpcaoGeral();
+int obtemOpcaoAluno();
+int cadastrarAluno(int qtdAlunos, Aluno alunos[]);
 
 int main()
 {
@@ -45,26 +46,16 @@ int main()
                             break;
                         }
                         case 1: {
-
-                            if (qtdAlunos == MAX) {
-                                printf("Máximo de alunos atingido\n");
-                                break;
-                            }
-
                             printf("Cadastro de aluno:\n\n");
+                            int cadastroRealizado = cadastrarAluno(qtdAlunos, alunos);
 
-                            int matricula;
-                            printf("Matrícula: ");
-                            scanf("%d", &matricula);
-
-                            if (matricula <= 0) {
-                                printf("Matrícula inválida\n");
-                            } else {
-                                alunos[qtdAlunos].matricula = matricula;
-                                alunos[qtdAlunos].ativo = VERDADEIRO;
+                            if (cadastroRealizado) {
                                 qtdAlunos++;
                                 printf("Aluno cadastrado com sucesso\n");
                             }
+                            else
+                                printf("Matrícula não realizada\n");
+
                             break;
                         }
                         case 2: {
@@ -180,4 +171,26 @@ int obtemOpcaoAluno() {
 
     scanf("%d", &opcao);
     return opcao;
+}
+
+int cadastrarAluno(int qtdAlunos, Aluno alunos[]) {
+    if (qtdAlunos == MAX) {
+        printf("Máximo de alunos atingido\n");
+        return FALSO;
+    }
+
+    int matricula;
+    printf("Matrícula: ");
+    scanf("%d", &matricula);
+
+    if (matricula <= 0) {
+        printf("Matrícula inválida\n");
+        return FALSO;
+    }
+    else
+    {
+        alunos[qtdAlunos].matricula = matricula;
+        alunos[qtdAlunos].ativo = VERDADEIRO;
+        return VERDADEIRO;
+    }
 }
