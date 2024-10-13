@@ -2,7 +2,7 @@
 #define MAX 3
 
 // Protótipos
-void imprimeMenuGeral();
+int obtemOpcaoGeral();
 
 typedef struct {
     int matricula;
@@ -20,8 +20,7 @@ int main()
     int sair = 0; // falso
 
     while (!sair) {
-        imprimeMenuGeral();
-        scanf("%d", &opcao);
+        opcao = obtemOpcaoGeral();
 
         switch (opcao) {
             case 0: {
@@ -162,8 +161,13 @@ int main()
 
 // Funções
 
-void imprimeMenuGeral() {
+int obtemOpcaoGeral() {
+    int opcao;
+
     printf("\n\nOpções:\n\n");
     printf("0: sair\n");
     printf("1: aluno\n");
+
+    scanf("%d", &opcao);
+    return opcao;
 }
