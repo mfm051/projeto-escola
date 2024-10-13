@@ -12,6 +12,7 @@ typedef struct {
 int obtemOpcaoGeral();
 int obtemOpcaoAluno();
 int cadastrarAluno(int qtdAlunos, Aluno alunos[]);
+void listarAlunos(int qtdAlunos, Aluno alunos[]);
 
 int main()
 {
@@ -59,15 +60,7 @@ int main()
                             break;
                         }
                         case 2: {
-                            if (qtdAlunos == 0) {
-                                printf("Não há alunos cadastrados\n");
-                            } else {
-                                for (int i = 0; i < qtdAlunos; i++) {
-                                    if (alunos[i].ativo)
-                                        printf("Matrícula: %d\n", alunos[i].matricula);
-                                }
-                            }
-
+                            listarAlunos(qtdAlunos, alunos);
                             break;
                         }
                         case 3: {
@@ -192,5 +185,16 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[]) {
         alunos[qtdAlunos].matricula = matricula;
         alunos[qtdAlunos].ativo = VERDADEIRO;
         return VERDADEIRO;
+    }
+}
+
+void listarAlunos(int qtdAlunos, Aluno alunos[]) {
+    if (qtdAlunos == 0) {
+        printf("Não há alunos cadastrados\n");
+    } else {
+        for (int i = 0; i < qtdAlunos; i++) {
+            if (alunos[i].ativo)
+                printf("Matrícula: %d\n", alunos[i].matricula);
+        }
     }
 }
