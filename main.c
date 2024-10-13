@@ -21,7 +21,7 @@ int main()
     Aluno alunos[MAX];
     int qtdAlunos = 0;
 
-    printf("Projeto escola\n\n");
+    printf("\nProjeto escola\n");
 
     int opcao;
     int sair = FALSO;
@@ -35,7 +35,7 @@ int main()
                 break;
             }
             case 1: {
-                printf("Módulo Aluno\n\n");
+                printf("\nMódulo Aluno\n");
 
                 int opcaoAluno;
                 int sairAluno = FALSO;
@@ -86,13 +86,13 @@ int main()
                             break;
                         }
                         default:
-                            printf("Opção inválida");
+                            printf("Opção inválida\n");
                     }
                 }
                 break;
             }
             default:
-                printf("Opção inválida");
+                printf("Opção inválida\n");
         }
     }
 }
@@ -102,7 +102,7 @@ int main()
 int obtemOpcaoGeral() {
     int opcao;
 
-    printf("\n\nOpções:\n\n");
+    printf("\nOpções:\n");
     printf("0: sair\n");
     printf("1: aluno\n");
 
@@ -113,7 +113,7 @@ int obtemOpcaoGeral() {
 int obtemOpcaoAluno() {
     int opcao;
 
-    printf("\n\nOpções Aluno:\n\n");
+    printf("\nOpções Aluno:\n");
     printf("0: voltar\n");
     printf("1: cadastrar aluno\n");
     printf("2: listar alunos\n");
