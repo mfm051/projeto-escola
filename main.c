@@ -47,7 +47,6 @@ int main()
                             break;
                         }
                         case 1: {
-                            printf("Cadastro de aluno:\n\n");
                             int cadastroRealizado = cadastrarAluno(qtdAlunos, alunos);
 
                             if (cadastroRealizado) {
@@ -173,7 +172,7 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[]) {
     }
 
     int matricula;
-    printf("Matrícula: ");
+    printf("Nova matrícula de aluno: ");
     scanf("%d", &matricula);
 
     if (matricula <= 0) {
@@ -197,4 +196,8 @@ void listarAlunos(int qtdAlunos, Aluno alunos[]) {
                 printf("Matrícula: %d\n", alunos[i].matricula);
         }
     }
+}
+
+int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
+
 }
