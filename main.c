@@ -1,5 +1,7 @@
 #include <stdio.h>
 #define MAX 3
+#define VERDADEIRO 1
+#define FALSO 0
 
 // Protótipos
 int obtemOpcaoGeral();
@@ -7,7 +9,7 @@ int obtemOpcaoAluno();
 
 typedef struct {
     int matricula;
-    int ativo; // 1: ativo, 0: inativo
+    int ativo;
 } Aluno;
 
 int main()
@@ -18,28 +20,28 @@ int main()
     printf("Projeto escola\n\n");
 
     int opcao;
-    int sair = 0; // falso
+    int sair = FALSO;
 
     while (!sair) {
         opcao = obtemOpcaoGeral();
 
         switch (opcao) {
             case 0: {
-                sair = 1;
+                sair = VERDADEIRO;
                 break;
             }
             case 1: {
                 printf("Módulo Aluno\n\n");
 
                 int opcaoAluno;
-                int sairAluno = 0; // falso
+                int sairAluno = FALSO;
 
                 while (!sairAluno) {
                     opcaoAluno = obtemOpcaoAluno();
 
                     switch (opcaoAluno) {
                         case 0: {
-                            sairAluno = 1;
+                            sairAluno = VERDADEIRO;
                             break;
                         }
                         case 1: {
@@ -59,7 +61,7 @@ int main()
                                 printf("Matrícula inválida\n");
                             } else {
                                 alunos[qtdAlunos].matricula = matricula;
-                                alunos[qtdAlunos].ativo = 1;
+                                alunos[qtdAlunos].ativo = VERDADEIRO;
                                 qtdAlunos++;
                                 printf("Aluno cadastrado com sucesso\n");
                             }
@@ -79,7 +81,7 @@ int main()
                         }
                         case 3: {
                             int matricula;
-                            int matricula_encontrada = 0;
+                            int matricula_encontrada = FALSO;
                             printf("Matrícula: ");
                             scanf("%d", &matricula);
 
@@ -89,7 +91,7 @@ int main()
                                 for (int i = 0; i < qtdAlunos; i++) {
                                     if (alunos[i].matricula == matricula) {
                                         matricula_encontrada = 1;
-                                        alunos[i].ativo = 0;
+                                        alunos[i].ativo = FALSO;
 
                                         for (int j = i; j < qtdAlunos; j++) {
                                             alunos[j] = alunos[j + 1];
@@ -110,7 +112,7 @@ int main()
                         }
                         case 4: {
                             int matricula;
-                            int matricula_encontrada = 0;
+                            int matricula_encontrada = FALSO;
                             printf("Matrícula: ");
                             scanf("%d", &matricula);
 
@@ -119,7 +121,7 @@ int main()
                             } else {
                                 for (int i = 0; i < qtdAlunos; i++) {
                                     if (alunos[i].matricula == matricula && alunos[i].ativo) {
-                                        matricula_encontrada = 1;
+                                        matricula_encontrada = VERDADEIRO;
 
                                         int nova_matricula;
                                         printf("Nova matrícula: ");
