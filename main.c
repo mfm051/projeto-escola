@@ -1,11 +1,23 @@
 #include <stdio.h>
-#define MAX 3
+#define MAXALUNOS 3
+#define MAXNOME 15
 #define VERDADEIRO 1
 #define FALSO 0
 
 typedef struct {
-    int matricula;
+    int dia;
+    int mes;
+    int ano;
+} Data;
+
+typedef struct
+{
     int ativo;
+    int matricula;
+    char nome[MAXNOME];
+    char sexo; // M: masculino, F: feminino
+    Data data_nascimento;
+    int cpf[11];
 } Aluno;
 
 // Protótipos
@@ -18,7 +30,7 @@ int excluirAluno(int qtdAlunos, Aluno alunos[]);
 
 int main()
 {
-    Aluno alunos[MAX];
+    Aluno alunos[MAXALUNOS];
     int qtdAlunos = 0;
 
     printf("\nProjeto escola\n");
@@ -125,7 +137,7 @@ int obtemOpcaoAluno() {
 }
 
 int cadastrarAluno(int qtdAlunos, Aluno alunos[]) {
-    if (qtdAlunos == MAX) {
+    if (qtdAlunos == MAXALUNOS) {
         printf("Máximo de alunos atingido\n");
         return FALSO;
     }
@@ -138,7 +150,7 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[]) {
         printf("Matrícula inválida\n");
         return FALSO;
     }
-    
+
     for (int i = 0; i < qtdAlunos; i++) {
         if (alunos[i].matricula == matricula && alunos[i].ativo) {
             printf("Aluno já cadastrado no sistema\n");
@@ -148,6 +160,7 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[]) {
 
     alunos[qtdAlunos].matricula = matricula;
     alunos[qtdAlunos].ativo = VERDADEIRO;
+
     return VERDADEIRO;
 }
 
