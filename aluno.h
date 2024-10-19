@@ -1,6 +1,7 @@
 #include "data.h"
 
-#define MAXNOME 15
+#define MAXNOME 100
+#define MAXCPF 11
 
 typedef struct
 {
@@ -9,7 +10,7 @@ typedef struct
     char nome[MAXNOME];
     char sexo; // M: masculino, F: feminino
     Data data_nascimento;
-    int cpf[11];
+    char cpf[MAXCPF];
 } Aluno;
 
 int cadastrarAluno(int qtdAlunos, Aluno alunos[], int maxAlunos);
