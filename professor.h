@@ -3,8 +3,7 @@
 #define MAXNOME 100
 #define MAXCPF 11
 
-typedef struct 
-{
+typedef struct {
   int ativo;
   int matricula;
   char nome[MAXNOME];

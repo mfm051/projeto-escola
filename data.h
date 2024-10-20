@@ -1,7 +1,8 @@
 #ifndef DATA_H
 #define DATA_H
 
-typedef struct {
+typedef struct 
+{
     int dia;
     int mes;
     int ano;

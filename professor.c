@@ -149,6 +149,7 @@ int obtemOpcaoProfessor(){
     printf("4: excluir professor\n");
 
     scanf("%d", &opcao);
+
     return opcao;  
 }
 
@@ -159,6 +160,6 @@ int encontraMatriculaProfessor(int qtdProfessores, Professor professores[], int 
         if (professores[i].matricula == matricula && professores[i].ativo)
             posicaoProfessor = i;
     }
-
+    
     return posicaoProfessor;
 }

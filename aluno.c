@@ -149,6 +149,7 @@ int obtemOpcaoAluno() {
     printf("4: excluir aluno\n");
 
     scanf("%d", &opcao);
+    
     return opcao;
 }
 

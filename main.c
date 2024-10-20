@@ -161,5 +161,6 @@ int obtemOpcaoGeral() {
     printf("2: professor\n");
 
     scanf("%d", &opcao);
+    
     return opcao;
 }
