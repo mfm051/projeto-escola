@@ -87,7 +87,6 @@ int main()
                 }
                 break;
             }
-            
             case 2: {
                 printf("\nMódulo Professor\n");
 
@@ -96,12 +95,57 @@ int main()
 
                 while (!sairProfessor) {
                     opcaoProfessor = obtemOpcaoProfessor();
-                
-                }
-            }  
-            
+
+                    switch (opcaoProfessor) {
+                        case 0 /* Sair */: {
+                            sairProfessor = VERDADEIRO;
+                            break;
+                        }
+                        case 1 /* Cadastrar */: {
+                            int cadastrado = cadastrarProfessor(qtdProfessores, professores, MAXPROFESSORES);
+
+                            if (cadastrado) {
+                                qtdProfessores++;
+                                printf("Professor cadastrado com sucesso\n");
+                            }
+                            else
+                                printf("Matrícula não realizada\n");
+
+                            break;
+                        }
+                        case 2 /* Listar */: {
+                            listarProfessores(qtdProfessores, professores);
+                            break;
+                        }
+                        case 3 /* Atualizar */: {
+                            int atualizado = atualizarProfessor (qtdProfessores, professores);
+
+                            if (atualizado)
+                                printf("Professor atualizado com sucesso\n");
+                            else
+                                printf("Atualização não realizada\n");
+
+                            break;
+                        }
+                        case 4 /* Excluir */: {
+                            int excluido = excluirProfessor(qtdProfessores, professores);
+
+                            if (excluido) {
+                                printf("Professor excluído com sucesso\n");
+                                qtdProfessores--;
+                            } else
+                                printf("Exclusão não realizada\n");
+                                break;
+                        }
+                        default:
+                            printf("Opção inválida\n");                       
+                    }
+                }  
+                break;
+            }
             default:
                 printf("Opção inválida\n");
+            
         }
     }
 }
