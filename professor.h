@@ -5,7 +5,7 @@
 
 typedef struct {
   int ativo;
-  int matriculaProfessor;
+  int matricula;
   char nome[MAXNOME];
   char sexo;
   Data data_nascimento;
@@ -17,4 +17,4 @@ void listarProfessores(int qtdProfessores, Professor professores[]);
 int atualizarProfessor(int qtdProfessores, Professor professores[]);
 int excluirProfessor(int qtdProfessores, Professor professores[]);
 int obtemOpcaoProfessor();
-int encontrarMatricula(int qtdProfessores, Professor professores[], int matriculaProfessor);
+int encontraMatriculaProfessor(int qtdProfessores, Professor professores[], int matricula);

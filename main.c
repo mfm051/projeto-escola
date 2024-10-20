@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include "aluno.h"
+#include "professor.h"
 
 #define MAXALUNOS 3
+#define MAXPROFESSORES 3
 #define VERDADEIRO 1
 #define FALSO 0
 
@@ -11,7 +13,9 @@ int obtemOpcaoGeral();
 int main()
 {
     Aluno alunos[MAXALUNOS];
+    Professor professores[MAXPROFESSORES];
     int qtdAlunos = 0;
+    int qtdProfessores = 0;
 
     printf("\nProjeto escola\n");
 
@@ -83,6 +87,19 @@ int main()
                 }
                 break;
             }
+            
+            case 2: {
+                printf("\nMódulo Professor\n");
+
+                int opcaoProfessor;
+                int sairProfessor = FALSO;
+
+                while (!sairProfessor) {
+                    opcaoProfessor = obtemOpcaoProfessor();
+                
+                }
+            }  
+            
             default:
                 printf("Opção inválida\n");
         }
@@ -97,6 +114,7 @@ int obtemOpcaoGeral() {
     printf("\nOpções:\n");
     printf("0: sair\n");
     printf("1: aluno\n");
+    printf("2: professor\n");
 
     scanf("%d", &opcao);
     return opcao;
