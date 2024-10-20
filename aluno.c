@@ -84,7 +84,7 @@ int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
     posicaoAluno = encontraMatricula(qtdAlunos, alunos, matricula);
 
     if (posicaoAluno == -1) {
-        printf("Matrícula não encontrada");
+        printf("Matrícula não encontrada\n");
         return FALSO;
     }
     else {
