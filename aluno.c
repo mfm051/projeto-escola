@@ -20,16 +20,14 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[], int maxAlunos) {
     printf("Matrícula do aluno: ");
     scanf("%d", &matricula);
 
-    if (matricula <= 0) {
-        printf("Matrícula inválida\n");
+    if (matricula < 0) {
+        printf("Matrícula inválida");
         return FALSO;
     }
 
-    for (int i = 0; i < qtdAlunos; i++) {
-        if (alunos[i].matricula == matricula && alunos[i].ativo) {
-            printf("Aluno já cadastrado no sistema\n");
-            return FALSO;
-        }
+    if (encontraMatricula(qtdAlunos, alunos, matricula) != -1) {
+        printf("Matrícula já cadastrada\n");
+        return FALSO;
     }
 
     alunos[qtdAlunos].matricula = matricula;
@@ -73,7 +71,7 @@ void listarAlunos(int qtdAlunos, Aluno alunos[]) {
 
 int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
     int matricula;
-    int matricula_encontrada = FALSO;
+    int posicaoAluno;
 
     printf("Matrícula do aluno: ");
     scanf("%d", &matricula);
@@ -82,34 +80,37 @@ int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
         printf("Matrícula inválida\n");
         return FALSO;
     }
-    else
-    {
-        for (int i = 0; i < qtdAlunos; i++) {
-            if (alunos[i].matricula == matricula && alunos[i].ativo) {
-                int nova_matricula;
-                printf("Nova matrícula: ");
-                scanf("%d", &nova_matricula);
 
-                if (nova_matricula <= 0) {
-                    printf("Matrícula inválida\n");
-                    return FALSO;
-                }
-                else
-                {
-                    alunos[i].matricula = nova_matricula;
-                    return VERDADEIRO;
-                }
-            }
-        }
+    posicaoAluno = encontraMatricula(qtdAlunos, alunos, matricula);
 
-        printf("Matrícula não encontrada\n");
+    if (posicaoAluno == -1) {
+        printf("Matrícula não encontrada");
         return FALSO;
+    }
+    else {
+        printf("Novo nome: ");
+        fgetc(stdin);
+        fgets(alunos[posicaoAluno].nome, MAXNOME, stdin);
+        alunos[posicaoAluno].nome[strlen(alunos[posicaoAluno].nome) - 1] = 0;
+
+        printf("Novo sexo: ");
+        scanf("%c", &alunos[posicaoAluno].sexo);
+
+        printf("Nova data de nascimento (dia/mês/ano): ");
+        scanf("%d/%d/%d", &alunos[posicaoAluno].data_nascimento.dia, &alunos[posicaoAluno].data_nascimento.mes, &alunos[posicaoAluno].data_nascimento.ano);
+
+        printf("Novo CPF: ");
+        fgetc(stdin);
+        fgets(alunos[posicaoAluno].cpf, MAXCPF, stdin);
+        alunos[posicaoAluno].cpf[strlen(alunos[posicaoAluno].cpf) - 1] = 0;
+
+        return VERDADEIRO;
     }
 }
 
 int excluirAluno(int qtdAlunos, Aluno alunos[]) {
     int matricula;
-    int matricula_encontrada = FALSO;
+    int posicaoAluno;
 
     printf("Matrícula do aluno: ");
     scanf("%d", &matricula);
@@ -118,23 +119,22 @@ int excluirAluno(int qtdAlunos, Aluno alunos[]) {
         printf("Matrícula inválida\n");
         return FALSO;
     }
-    else
-    {
-        for (int i = 0; i < qtdAlunos; i++) {
-            if (alunos[i].matricula == matricula) {
-                matricula_encontrada = VERDADEIRO;
-                alunos[i].ativo = FALSO;
 
-                for (int j = i; j < qtdAlunos; j++) {
-                    alunos[j] = alunos[j + 1];
-                };
+    posicaoAluno = encontraMatricula(qtdAlunos, alunos, matricula);
 
-                return VERDADEIRO;
-            }
-        }
-
+    if (posicaoAluno == -1) {
         printf("Matrícula não encontrada\n");
         return FALSO;
+    }
+    else
+    {
+        alunos[posicaoAluno].ativo = FALSO;
+
+        for (int i = posicaoAluno; i < qtdAlunos; i++) {
+            alunos[i] = alunos[i + 1];
+        };
+
+        return VERDADEIRO;
     }
 }
 
@@ -150,4 +150,15 @@ int obtemOpcaoAluno() {
 
     scanf("%d", &opcao);
     return opcao;
+}
+
+int encontraMatricula(int qtdAlunos, Aluno alunos[], int matricula) {
+    int posicaoAluno = -1;
+
+    for (int i = 0; i < qtdAlunos; i++) {
+        if (alunos[i].matricula == matricula && alunos[i].ativo)
+            posicaoAluno = i;
+    }
+
+    return posicaoAluno;
 }
