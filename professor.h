@@ -20,4 +20,4 @@ int atualizarProfessor(int qtdProfessores, Professor professores[]);
 int excluirProfessor(int qtdProfessores, Professor professores[]);
 int obtemOpcaoProfessor();
 int encontrarMatricula(int qtdProfessores, Professor professores[], int matriculaProfessor);
-int encontrarDisciplina(int qtdProfessores, Professor professores[], char disciplina);
+int encontrarDisciplina(int qtdProfessores, Professor professores[], char disciplina[]);
