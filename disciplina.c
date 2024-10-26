@@ -50,13 +50,13 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
 
 
     printf("Digite o nome do professor responsável: ");
-    scanf("%c", &dadosProfessor.nome);
+    scanf("%s", &dadosProfessor.nome);
 
-    Professor* professor = buscarProfessorPorNome(dadosProfessor.nome);
+    Professor* professor = buscarProfessorPorNome(dadosProfessor.matricula, dadosProfessor.ativo, dadosProfessor.nome);
     
     if (professor == NULL) {
-        printf("Professor com o nome %c não encontrado. Cadastro cancelado.\n", dadosProfessor.nome);
-        return;
+        printf("Professor com o nome %s não encontrado. Cadastro cancelado.\n", dadosProfessor.nome);
+        return FALSO;
     }
 
     return VERDADEIRO;

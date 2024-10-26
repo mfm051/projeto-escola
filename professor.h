@@ -3,6 +3,9 @@
 #define MAXNOME 100
 #define MAXCPF 11
 
+#ifndef PROFESSOR_H
+#define PROFESSOR_H
+
 typedef struct 
 {
     int ativo;
@@ -19,3 +22,6 @@ int atualizarProfessor (int qtdProfessores, Professor professores[]);
 int excluirProfessor (int qtdProfessores, Professor professores[]);
 int obtemOpcaoProfessor ();
 int encontraMatriculaProfessor (int qtdProfessores, Professor professores[], int matricula);
+int buscarProfessorPorNome (int qtdProfessores, Professor professores[], char nome[]);
+
+#endif 

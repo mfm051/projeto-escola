@@ -5,7 +5,7 @@
 #define VERDADEIRO 1
 #define FALSO 0
 
-int cadastrarProfessor(int qtdProfessores, Professor professores[], int maxProfessores) {
+int cadastrarProfessor (int qtdProfessores, Professor professores[], int maxProfessores) {
     int matricula;
     char nome[MAXNOME];
     char sexo;
