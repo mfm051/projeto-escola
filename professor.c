@@ -163,3 +163,13 @@ int encontraMatriculaProfessor(int qtdProfessores, Professor professores[], int 
     
     return posicaoProfessor;
 }
+
+int buscarProfessorPorMatricula(int matricula, Professor professores[], int qtdProfessores) {
+    for (int i = 0; i < qtdProfessores; i++) {
+        if (professores[i].matricula == matricula) {
+            return i;
+        }
+    }
+    return -1;
+}
+

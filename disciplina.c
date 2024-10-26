@@ -1,18 +1,19 @@
 #include <stdio.h>
 #include <string.h>
 #include "disciplina.h"
-#include "professor.h"
-#include "semestre.h"
 
 #define VERDADEIRO 1
 #define FALSO 0
 
+#define MAXPROFESSORES 100
+
 int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas) {
 
     char nomeDisciplina[MAXNOME];
-    int codigo;
+    int codigo, matricula;
     Semestre periodoAtual;
-    Professor dadosProfessor;
+    Professor professores[MAXPROFESSORES];
+    int qtdProfessores;
 
     if (qtdDisciplinas == maxDisciplinas) {
         printf("Máximo de disciplinas atingido!\n");
@@ -27,7 +28,7 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
         return FALSO;
     }
 
-    if (encontraCodigoDisciplina(qtdDisciplinas, disciplinas, codigo) != -1) {
+    if (encontraCodigoDisciplina(codigo, qtdDisciplinas, disciplinas) != -1) {
         printf("Código já cadastrado!\n");
         return FALSO;
     }
@@ -45,24 +46,32 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
         return FALSO;
     }
 
-    printf("Digite o semestre da disciplina: ");
-    scanf("%d %d", &periodoAtual.ano, &periodoAtual.periodo);
+    printf("Digite o semestre da disciplina (ano.período): ");
+    scanf("%d.%d", &periodoAtual.ano, &periodoAtual.periodo);
+    disciplinas[qtdDisciplinas].periodo = periodoAtual;
 
+    printf("Digite a matrícula do professor responsável: ");
+    scanf("%d", &matricula);
 
-    printf("Digite o nome do professor responsável: ");
-    scanf("%s", &dadosProfessor.nome);
+    int indiceProfessor = buscarProfessorPorMatricula(matricula, professores, qtdProfessores);
 
-    Professor* professor = buscarProfessorPorNome(dadosProfessor.matricula, dadosProfessor.ativo, dadosProfessor.nome);
-    
-    if (professor == NULL) {
-        printf("Professor com o nome %s não encontrado. Cadastro cancelado.\n", dadosProfessor.nome);
+    if (indiceProfessor == -1) {
+        printf("Professor com a matrícula %d não encontrado. Cadastro cancelado.\n", matricula);
         return FALSO;
     }
+
+    disciplinas[qtdDisciplinas].matricula = matricula;
 
     return VERDADEIRO;
 }
 
-int excluirDisciplina (int qtdDisciplinas, Disciplina disciplinas[]) {
+void listarDisciplinas (int qtdDisciplinas, Disciplina disciplinas[]) {
+    for (int i = 0; i < qtdDisciplinas; i++) {
+        printf("Código: %d, Nome: %s\n", disciplinas[i].codigo, disciplinas[i].nomeDisciplina);
+    }
+}
+
+int excluirDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
     int codigo;
     int posicaoDisciplina;
 
@@ -74,22 +83,34 @@ int excluirDisciplina (int qtdDisciplinas, Disciplina disciplinas[]) {
         return FALSO;
     }
 
-    posicaoDisciplina = encontraCodigoDisciplina(qtdDisciplinas, disciplinas, codigo);
+    posicaoDisciplina = encontraCodigoDisciplina(codigo, qtdDisciplinas, disciplinas);
 
     if (posicaoDisciplina == -1) {
         printf("Disciplina não encontrada!\n");
         return FALSO;
-    }
-    else
-    {
+    } else {
         disciplinas[posicaoDisciplina].ativo = FALSO;
 
-        for (int i = posicaoDisciplina; i < qtdDisciplinas; i++) {
+        for (int i = posicaoDisciplina; i < qtdDisciplinas - 1; i++) {
             disciplinas[i] = disciplinas[i + 1];
-        };
+        }
 
+        qtdDisciplinas--;
         return VERDADEIRO;
     }
+}
+
+int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
+    int codigo;
+    printf("Digite o código da disciplina a ser atualizada: ");
+    scanf("%d", &codigo);
+    int indice = encontraCodigoDisciplina(codigo, qtdDisciplinas, disciplinas);
+    if (indice != -1) {
+        printf("Digite o novo nome da disciplina: ");
+        scanf("%s", disciplinas[indice].nomeDisciplina);
+        return 1;
+    }
+    return 0;
 }
 
 int obtemOpcaoDisciplina (){
@@ -107,13 +128,20 @@ int obtemOpcaoDisciplina (){
     return opcao;  
 }
 
-int encontraDisciplinaProfessor (int qtdDisciplinas, Disciplina disciplinas[], char nomeDisciplina[]) {
-    int posicaoDisciplina = -1;
-
+int encontraDisciplinaProfessor(int qtdDisciplinas, Disciplina disciplinas[], char nomeDisciplina[]) {
     for (int i = 0; i < qtdDisciplinas; i++) {
-        if (disciplinas[i].nomeDisciplina == nomeDisciplina && disciplinas[i].ativo)
-            posicaoDisciplina = i;
+        if (strcmp(disciplinas[i].nomeDisciplina, nomeDisciplina) == 0 && disciplinas[i].ativo) {
+            return i;
+        }
     }
-    
-    return posicaoDisciplina;
+    return -1;
+}
+
+int encontraCodigoDisciplina(int codigo, int qtdDisciplinas, Disciplina disciplinas[]) {
+    for (int i = 0; i < qtdDisciplinas; i++) {
+        if (disciplinas[i].codigo == codigo) {
+            return i;
+        }
+    }
+    return -1;
 }
