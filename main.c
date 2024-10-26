@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include "aluno.h"
 #include "professor.h"
+#include "disciplina.h"
 
 #define MAXALUNOS 3
 #define MAXPROFESSORES 3
+#define MAXDISCIPLINAS 3
+
 #define VERDADEIRO 1
 #define FALSO 0
 
@@ -14,8 +17,11 @@ int main()
 {
     Aluno alunos[MAXALUNOS];
     Professor professores[MAXPROFESSORES];
+    Disciplina disciplinas[MAXDISCIPLINAS];
+
     int qtdAlunos = 0;
     int qtdProfessores = 0;
+    int qtdDisciplinas = 0;
 
     printf("\nProjeto escola\n");
 
@@ -143,9 +149,70 @@ int main()
                 }  
                 break;
             }
+            case 3: {
+
+                printf("\nMódulo Disciplina\n");
+
+                int opcaoDisciplina;
+                int sairDisciplina = FALSO;
+
+                while (!sairDisciplina) {
+                    opcaoDisciplina = obtemOpcaoDisciplina();
+
+                    switch (opcaoDisciplina) {
+                        case 0 /* Sair */: {
+                            sairDisciplina = VERDADEIRO;
+                            break;
+                        }
+
+                        case 1 /* Cadastrar */: {
+                            int cadastrado = cadastrarDisciplina(qtdDisciplinas, disciplinas, MAXDISCIPLINAS);
+
+                            if (cadastrado) {
+                                qtdDisciplinas++;
+                                printf("Disciplina cadastrada com sucesso!\n");
+                            }
+                            else
+                                printf("Cadastro não realizado\n");
+                            break;
+                        }
+
+                        case 2 /* Listar */: {
+                            listarDisciplinas(qtdDisciplinas, disciplinas);
+                            break;
+                        }
+
+                        case 3 /* Atualizar */: {
+                            int atualizado = atualizarDisciplina(qtdDisciplinas, disciplinas);
+
+                            if (atualizado)
+                                printf("Disciplina atualizada com sucesso\n");
+                            else
+                                printf("Atualização não realizada\n");
+                            break;
+                        }
+
+                        case 4 /* Excluir */: {
+                            int excluido = excluirDisciplina(qtdDisciplinas, disciplinas);
+
+                            if (excluido) {
+                                printf("Disciplina excluída com sucesso\n");
+                                qtdDisciplinas--;
+                            } else
+                                printf("Exclusão não realizada\n");
+                                break;
+                        }
+
+                        default:
+                            printf("Opção inválida\n");                       
+                    }
+                }  
+                break;               
+
+            }
+
             default:
                 printf("Opção inválida\n");
-            
         }
     }
 }
@@ -159,6 +226,7 @@ int obtemOpcaoGeral() {
     printf("0: sair\n");
     printf("1: aluno\n");
     printf("2: professor\n");
+    printf("3: disciplina\n");
 
     scanf("%d", &opcao);
     
