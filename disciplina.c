@@ -17,7 +17,7 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
     if (qtdDisciplinas == maxDisciplinas) {
         printf("Máximo de disciplinas atingido!\n");
         return FALSO;
-    }//pronto
+    }
 
     printf("Código da disciplina: ");
     scanf("%d", &codigo);
@@ -25,25 +25,25 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
     if (codigo < 0) {
         printf("Código inválido!");
         return FALSO;
-    }//pronto
+    }
 
     if (encontraCodigoDisciplina(qtdDisciplinas, disciplinas, codigo) != -1) {
         printf("Código já cadastrado!\n");
         return FALSO;
-    }//pronto
+    }
 
-    disciplinas[qtdDisciplinas].codigo = codigo;//pronto
+    disciplinas[qtdDisciplinas].codigo = codigo;
 
     printf("Digite o nome da disciplina: ");
     fgetc(stdin);
     fgets(disciplinas[qtdDisciplinas].nomeDisciplina, MAXNOME, stdin);
     disciplinas[qtdDisciplinas].nomeDisciplina[strlen(disciplinas[qtdDisciplinas].nomeDisciplina) - 1] = 0;
-    //pronto
+    
 
     if (encontraDisciplinaProfessor(qtdDisciplinas, disciplinas, nomeDisciplina) != -1) {
-        printf("Disciplina já cadastrada\n");
+        printf("Disciplina já cadastrada!\n");
         return FALSO;
-    }//pronto
+    }
 
     printf("Digite o semestre da disciplina: ");
     scanf("%d %d", &periodoAtual.ano, &periodoAtual.periodo);
@@ -62,7 +62,7 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
     return VERDADEIRO;
 }
 
-int excluirDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
+int excluirDisciplina (int qtdDisciplinas, Disciplina disciplinas[]) {
     int codigo;
     int posicaoDisciplina;
 
@@ -70,14 +70,14 @@ int excluirDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
     scanf("%d", &codigo);
 
     if (codigo <= 0) {
-        printf("Código inválido\n");
+        printf("Código inválido!\n");
         return FALSO;
     }
 
     posicaoDisciplina = encontraCodigoDisciplina(qtdDisciplinas, disciplinas, codigo);
 
     if (posicaoDisciplina == -1) {
-        printf("Disciplina não encontrada\n");
+        printf("Disciplina não encontrada!\n");
         return FALSO;
     }
     else
@@ -92,7 +92,7 @@ int excluirDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
     }
 }
 
-int obtemOpcaoDisciplina(){
+int obtemOpcaoDisciplina (){
     int opcao;
 
     printf("\nOpções Disciplina:\n");
@@ -107,7 +107,7 @@ int obtemOpcaoDisciplina(){
     return opcao;  
 }
 
-int encontraDisciplinaProfessor(int qtdDisciplinas, Disciplina disciplinas[], char nomeDisciplina[]) {
+int encontraDisciplinaProfessor (int qtdDisciplinas, Disciplina disciplinas[], char nomeDisciplina[]) {
     int posicaoDisciplina = -1;
 
     for (int i = 0; i < qtdDisciplinas; i++) {

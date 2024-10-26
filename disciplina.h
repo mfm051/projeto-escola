@@ -15,12 +15,12 @@ typedef struct
     Professor dadosProfessor;
 } Disciplina;
 
-int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas);
-void listarDisciplinas(int qtdDisciplinas, Disciplina disciplinas[]);
-int excluirDisciplina(int qtdDisciplinas, Disciplina disciplinas[]);
-int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[]);
-int obtemOpcaoDisciplina();
-int encontraDisciplinaProfessor(int qtdDisciplinas, Disciplina disciplinas[], char nomeDisciplina[]);
-int encontraCodigoDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int codigo);
+int cadastrarDisciplina (int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas);
+void listarDisciplinas (int qtdDisciplinas, Disciplina disciplinas[]);
+int excluirDisciplina (int qtdDisciplinas, Disciplina disciplinas[]);
+int atualizarDisciplina (int qtdDisciplinas, Disciplina disciplinas[]);
+int obtemOpcaoDisciplina ();
+int encontraDisciplinaProfessor (int qtdDisciplinas, Disciplina disciplinas[], char nomeDisciplina[]);
+int encontraCodigoDisciplina (int qtdDisciplinas, Disciplina disciplinas[], int codigo);
 
 #endif

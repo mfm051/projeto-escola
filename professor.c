@@ -13,7 +13,7 @@ int cadastrarProfessor(int qtdProfessores, Professor professores[], int maxProfe
     char cpf[MAXCPF];
 
     if (qtdProfessores == maxProfessores) {
-        printf("Máximo de professores atingido\n");
+        printf("Máximo de professores atingido!\n");
         return FALSO;
     }
 
@@ -21,12 +21,12 @@ int cadastrarProfessor(int qtdProfessores, Professor professores[], int maxProfe
     scanf("%d", &matricula);
 
     if (matricula < 0) {
-        printf("Matrícula inválida");
+        printf("Matrícula inválida!");
         return FALSO;
     }
 
     if (encontraMatriculaProfessor(qtdProfessores, professores, matricula) != -1) {
-        printf("Matrícula já cadastrada\n");
+        printf("Matrícula já cadastrada!\n");
         return FALSO;
     }
 
@@ -55,7 +55,7 @@ int cadastrarProfessor(int qtdProfessores, Professor professores[], int maxProfe
 
 void listarProfessores(int qtdProfessores, Professor professores[]) {
     if (qtdProfessores == 0) {
-        printf("Não há professores cadastrados\n");
+        printf("Não há professores cadastrados!\n");
     } else {
         for (int i = 0; i < qtdProfessores; i++) {
             if (professores[i].ativo) {
@@ -77,14 +77,14 @@ int atualizarProfessor(int qtdProfessores, Professor professores[]) {
     scanf("%d", &matricula);
 
     if (matricula <= 0) {
-        printf("Matrícula inválida\n");
+        printf("Matrícula inválida!\n");
         return FALSO;
     }
 
     posicaoProfessor = encontraMatriculaProfessor(qtdProfessores, professores, matricula);
 
     if (posicaoProfessor == -1) {
-        printf("Matrícula não encontrada\n");
+        printf("Matrícula não encontrada!\n");
         return FALSO;
     }
     else {
@@ -116,14 +116,14 @@ int excluirProfessor(int qtdProfessores, Professor professores[]) {
     scanf("%d", &matricula);
 
     if (matricula <= 0) {
-        printf("Matrícula inválida\n");
+        printf("Matrícula inválida!\n");
         return FALSO;
     }
 
     posicaoProfessor = encontraMatriculaProfessor(qtdProfessores, professores, matricula);
 
     if (posicaoProfessor == -1) {
-        printf("Matrícula não encontrada\n");
+        printf("Matrícula não encontrada!\n");
         return FALSO;
     }
     else

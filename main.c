@@ -11,7 +11,7 @@
 #define FALSO 0
 
 // Protótipos
-int obtemOpcaoGeral();
+int obtemOpcaoGeral ();
 
 int main()
 {
@@ -23,7 +23,7 @@ int main()
     int qtdProfessores = 0;
     int qtdDisciplinas = 0;
 
-    printf("\nProjeto escola\n");
+    printf("\nPROJETO ESCOLA\n");
 
     int opcao;
     int sair = FALSO;
@@ -55,10 +55,10 @@ int main()
 
                             if (cadastrado) {
                                 qtdAlunos++;
-                                printf("Aluno cadastrado com sucesso\n");
+                                printf("Aluno cadastrado com sucesso!\n");
                             }
                             else
-                                printf("Matrícula não realizada\n");
+                                printf("Matrícula não realizada!\n");
 
                             break;
                         }
@@ -70,9 +70,9 @@ int main()
                             int atualizado = atualizarAluno(qtdAlunos, alunos);
 
                             if (atualizado)
-                                printf("Aluno atualizado com sucesso\n");
+                                printf("Aluno atualizado com sucesso!\n");
                             else
-                                printf("Atualização não realizada\n");
+                                printf("Atualização não realizada!\n");
 
                             break;
                         }
@@ -80,15 +80,15 @@ int main()
                             int excluido = excluirAluno(qtdAlunos, alunos);
 
                             if (excluido) {
-                                printf("Aluno excluído com sucesso\n");
+                                printf("Aluno excluído com sucesso!\n");
                                 qtdAlunos--;
                             } else
-                                printf("Exclusão não realizada\n");
+                                printf("Exclusão não realizada!\n");
 
                             break;
                         }
                         default:
-                            printf("Opção inválida\n");
+                            printf("Opção inválida!\n");
                     }
                 }
                 break;
@@ -112,10 +112,10 @@ int main()
 
                             if (cadastrado) {
                                 qtdProfessores++;
-                                printf("Professor cadastrado com sucesso\n");
+                                printf("Professor cadastrado com sucesso!\n");
                             }
                             else
-                                printf("Matrícula não realizada\n");
+                                printf("Matrícula não realizada!\n");
 
                             break;
                         }
@@ -127,9 +127,9 @@ int main()
                             int atualizado = atualizarProfessor (qtdProfessores, professores);
 
                             if (atualizado)
-                                printf("Professor atualizado com sucesso\n");
+                                printf("Professor atualizado com sucesso!\n");
                             else
-                                printf("Atualização não realizada\n");
+                                printf("Atualização não realizada!\n");
 
                             break;
                         }
@@ -137,14 +137,14 @@ int main()
                             int excluido = excluirProfessor(qtdProfessores, professores);
 
                             if (excluido) {
-                                printf("Professor excluído com sucesso\n");
+                                printf("Professor excluído com sucesso!\n");
                                 qtdProfessores--;
                             } else
-                                printf("Exclusão não realizada\n");
+                                printf("Exclusão não realizada!\n");
                                 break;
                         }
                         default:
-                            printf("Opção inválida\n");                       
+                            printf("Opção inválida!\n");                       
                     }
                 }  
                 break;
@@ -173,7 +173,7 @@ int main()
                                 printf("Disciplina cadastrada com sucesso!\n");
                             }
                             else
-                                printf("Cadastro não realizado\n");
+                                printf("Cadastro não realizado!\n");
                             break;
                         }
 
@@ -186,9 +186,9 @@ int main()
                             int atualizado = atualizarDisciplina(qtdDisciplinas, disciplinas);
 
                             if (atualizado)
-                                printf("Disciplina atualizada com sucesso\n");
+                                printf("Disciplina atualizada com sucesso!\n");
                             else
-                                printf("Atualização não realizada\n");
+                                printf("Atualização não realizada!\n");
                             break;
                         }
 
@@ -196,15 +196,15 @@ int main()
                             int excluido = excluirDisciplina(qtdDisciplinas, disciplinas);
 
                             if (excluido) {
-                                printf("Disciplina excluída com sucesso\n");
+                                printf("Disciplina excluída com sucesso!\n");
                                 qtdDisciplinas--;
                             } else
-                                printf("Exclusão não realizada\n");
+                                printf("Exclusão não realizada!\n");
                                 break;
                         }
 
                         default:
-                            printf("Opção inválida\n");                       
+                            printf("Opção inválida!\n");                       
                     }
                 }  
                 break;               
@@ -212,7 +212,7 @@ int main()
             }
 
             default:
-                printf("Opção inválida\n");
+                printf("Opção inválida!\n");
         }
     }
 }

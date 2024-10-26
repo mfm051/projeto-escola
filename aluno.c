@@ -13,7 +13,7 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[], int maxAlunos) {
     char cpf[MAXCPF];
 
     if (qtdAlunos == maxAlunos) {
-        printf("Máximo de alunos atingido\n");
+        printf("Máximo de alunos atingido!\n");
         return FALSO;
     }
 
@@ -21,12 +21,12 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[], int maxAlunos) {
     scanf("%d", &matricula);
 
     if (matricula < 0) {
-        printf("Matrícula inválida");
+        printf("Matrícula inválida!");
         return FALSO;
     }
 
     if (encontraMatricula(qtdAlunos, alunos, matricula) != -1) {
-        printf("Matrícula já cadastrada\n");
+        printf("Matrícula já cadastrada!\n");
         return FALSO;
     }
 
@@ -55,8 +55,9 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[], int maxAlunos) {
 
 void listarAlunos(int qtdAlunos, Aluno alunos[]) {
     if (qtdAlunos == 0) {
-        printf("Não há alunos cadastrados\n");
-    } else {
+        printf("Não há alunos cadastrados!\n");
+    } 
+    else {
         for (int i = 0; i < qtdAlunos; i++) {
             if (alunos[i].ativo) {
                 printf("Matrícula: %d\n", alunos[i].matricula);
@@ -77,14 +78,14 @@ int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
     scanf("%d", &matricula);
 
     if (matricula <= 0) {
-        printf("Matrícula inválida\n");
+        printf("Matrícula inválida!\n");
         return FALSO;
     }
 
     posicaoAluno = encontraMatricula(qtdAlunos, alunos, matricula);
 
     if (posicaoAluno == -1) {
-        printf("Matrícula não encontrada\n");
+        printf("Matrícula não encontrada!\n");
         return FALSO;
     }
     else {
@@ -116,14 +117,14 @@ int excluirAluno(int qtdAlunos, Aluno alunos[]) {
     scanf("%d", &matricula);
 
     if (matricula <= 0) {
-        printf("Matrícula inválida\n");
+        printf("Matrícula inválida!\n");
         return FALSO;
     }
 
     posicaoAluno = encontraMatricula(qtdAlunos, alunos, matricula);
 
     if (posicaoAluno == -1) {
-        printf("Matrícula não encontrada\n");
+        printf("Matrícula não encontrada!\n");
         return FALSO;
     }
     else
