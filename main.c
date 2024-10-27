@@ -1,14 +1,10 @@
-#include <stdio.h>
 #include "aluno.h"
 #include "professor.h"
 #include "disciplina.h"
+#include "constantes.h"
 
-#define MAXALUNOS 3
-#define MAXPROFESSORES 3
-#define MAXDISCIPLINAS 3
-
-#define VERDADEIRO 1
-#define FALSO 0
+#include <stdio.h>
+#include <stdbool.h>
 
 // Protótipos
 int obtemOpcaoGeral ();
@@ -26,28 +22,28 @@ int main()
     printf("\nPROJETO ESCOLA\n");
 
     int opcao;
-    int sair = FALSO;
+    int sair = false;
 
     while (!sair) {
         opcao = obtemOpcaoGeral();
 
         switch (opcao) {
             case 0: {
-                sair = VERDADEIRO;
+                sair = true;
                 break;
             }
             case 1: {
                 printf("\nMódulo Aluno\n");
 
                 int opcaoAluno;
-                int sairAluno = FALSO;
+                int sairAluno = false;
 
                 while (!sairAluno) {
                     opcaoAluno = obtemOpcaoAluno();
 
                     switch (opcaoAluno) {
                         case 0 /* Sair */: {
-                            sairAluno = VERDADEIRO;
+                            sairAluno = true;
                             break;
                         }
                         case 1 /* Cadastrar */: {
@@ -97,14 +93,14 @@ int main()
                 printf("\nMódulo Professor\n");
 
                 int opcaoProfessor;
-                int sairProfessor = FALSO;
+                int sairProfessor = false;
 
                 while (!sairProfessor) {
                     opcaoProfessor = obtemOpcaoProfessor();
 
                     switch (opcaoProfessor) {
                         case 0 /* Sair */: {
-                            sairProfessor = VERDADEIRO;
+                            sairProfessor = true;
                             break;
                         }
                         case 1 /* Cadastrar */: {
@@ -154,14 +150,14 @@ int main()
                 printf("\nMódulo Disciplina\n");
 
                 int opcaoDisciplina;
-                int sairDisciplina = FALSO;
+                int sairDisciplina = false;
 
                 while (!sairDisciplina) {
                     opcaoDisciplina = obtemOpcaoDisciplina();
 
                     switch (opcaoDisciplina) {
                         case 0 /* Sair */: {
-                            sairDisciplina = VERDADEIRO;
+                            sairDisciplina = true;
                             break;
                         }
 

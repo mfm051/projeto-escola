@@ -32,7 +32,6 @@ int validaData(int dia, int mes, int ano) {
 }
 
 int validaCPF(char cpf[]) {
-    printf("\n\n\n%s\n\n\n", cpf);
     if (strlen(cpf) != 11)
     {
         printf("CPF inválido");

@@ -1,7 +1,5 @@
 #include "data.h"
-
-#define MAXNOME 100
-#define MAXCPF 11
+#include "constantes.h"
 
 typedef struct
 {
@@ -18,4 +16,4 @@ void listarAlunos (int qtdAlunos, Aluno alunos[]);
 int atualizarAluno (int qtdAlunos, Aluno alunos[]);
 int excluirAluno (int qtdAlunos, Aluno alunos[]);
 int obtemOpcaoAluno ();
-int encontraMatricula (int qtdAlunos, Aluno alunos[], int matricula);
+int encontraMatriculaAluno (int qtdAlunos, Aluno alunos[], int matricula);
