@@ -1,6 +1,7 @@
 #include "aluno.h"
 #include "professor.h"
 #include "disciplina.h"
+#include "interface.h"
 #include "constantes.h"
 
 #include <stdio.h>
@@ -35,13 +36,10 @@ int main()
             case 1: {
                 printf("\nMódulo Aluno\n");
 
-                int opcaoAluno;
                 int sairAluno = false;
 
                 while (!sairAluno) {
-                    opcaoAluno = obtemOpcaoAluno();
-
-                    switch (opcaoAluno) {
+                    switch (obtemOpcaoModulo()) {
                         case 0 /* Sair */: {
                             sairAluno = true;
                             break;
@@ -92,13 +90,10 @@ int main()
             case 2: {
                 printf("\nMódulo Professor\n");
 
-                int opcaoProfessor;
                 int sairProfessor = false;
 
                 while (!sairProfessor) {
-                    opcaoProfessor = obtemOpcaoProfessor();
-
-                    switch (opcaoProfessor) {
+                    switch (obtemOpcaoModulo()) {
                         case 0 /* Sair */: {
                             sairProfessor = true;
                             break;
@@ -140,7 +135,7 @@ int main()
                                 break;
                         }
                         default:
-                            printf("Opção inválida!\n");                       
+                            printf("Opção inválida!\n");
                     }
                 }  
                 break;

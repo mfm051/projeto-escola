@@ -1,7 +1,5 @@
 #include "data.h"
-
-#define MAXNOME 100
-#define MAXCPF 11
+#include "constantes.h"
 
 #ifndef PROFESSOR_H
 #define PROFESSOR_H
@@ -24,4 +22,4 @@ int obtemOpcaoProfessor ();
 int encontraMatriculaProfessor (int qtdProfessores, Professor professores[], int matricula);
 int buscarProfessorPorMatricula(int matricula, Professor professores[], int qtdProfessores);
 
-#endif 
+#endif

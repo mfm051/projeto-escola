@@ -5,7 +5,7 @@
 #define VERDADEIRO 1
 #define FALSO 0
 
-#define MAXPROFESSORES 100
+#define MAXPROFESSORES 3
 
 int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas) {
 

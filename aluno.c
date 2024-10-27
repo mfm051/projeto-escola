@@ -79,21 +79,6 @@ int excluirAluno(int qtdAlunos, Aluno alunos[]) {
     return true;
 }
 
-int obtemOpcaoAluno() {
-    int opcao;
-
-    printf("\nOpções Aluno:\n");
-    printf("0: voltar\n");
-    printf("1: cadastrar aluno\n");
-    printf("2: listar alunos\n");
-    printf("3: atualizar aluno\n");
-    printf("4: excluir aluno\n");
-
-    scanf("%d", &opcao);
-
-    return opcao;
-}
-
 int encontraMatriculaAluno(int qtdAlunos, Aluno alunos[], int matricula) {
     int posicaoAluno = -1;
 
