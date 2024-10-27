@@ -5,7 +5,7 @@ typedef struct
 {
     int ativo;
     int matricula;
-    char nome[MAXNOME];
+    char nome[MAXNOMEPESSOA];
     char sexo; // M: masculino, F: feminino
     Data data_nascimento;
     char cpf[MAXCPF];

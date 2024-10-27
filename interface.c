@@ -31,6 +31,17 @@ int obtemMatricula() {
     return matricula;
 }
 
+int obtemCodigo() {
+    int codigo;
+
+    do {
+        printf("Código: ");
+        scanf("%d", &codigo);
+    } while (validaCodigo(codigo) == false);
+
+    return codigo;
+}
+
 char obtemSexo() {
     char sexo;
 
@@ -42,13 +53,13 @@ char obtemSexo() {
     return sexo;
 }
 
-char *obtemNome() {
+char *obtemNome(int maxChars) {
     char *nome;
-    nome = (char *) malloc ((MAXNOME + 1) * sizeof(char));
+    nome = (char *) malloc ((maxChars + 1) * sizeof(char));
 
     printf("Nome: ");
     fgetc(stdin);
-    fgets(nome, MAXNOME, stdin);
+    fgets(nome, maxChars, stdin);
     nome[strlen(nome) - 1] = 0;
 
     return nome;

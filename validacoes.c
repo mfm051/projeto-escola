@@ -12,6 +12,15 @@ int validaMatricula(int matricula) {
     return true;
 }
 
+int validaCodigo(int codigo) {
+    if (codigo <= 0) {
+        printf("Código inválido\n");
+        return false;
+    }
+
+    return true;
+}
+
 int validaSexo(char sexo) {
     if (sexo != 'M' && sexo != 'F') {
         printf("Sexo inválido\n");

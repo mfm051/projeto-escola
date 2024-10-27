@@ -7,8 +7,9 @@
 
 int obtemOpcaoModulo();
 int obtemMatricula();
+int obtemCodigo();
 char obtemSexo();
-char *obtemNome();
+char *obtemNome(int maxChars);
 void atualizaData(Data *data);
 char *obtemCPF();
 

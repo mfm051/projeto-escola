@@ -19,7 +19,7 @@ int cadastrarProfessor (int qtdProfessores, Professor professores[], int maxProf
     }
 
     professores[qtdProfessores].matricula = matricula;
-    strcpy(professores[qtdProfessores].nome, obtemNome());
+    strcpy(professores[qtdProfessores].nome, obtemNome(MAXNOMEPESSOA));
     professores[qtdProfessores].sexo = obtemSexo();
     atualizaData(&professores[qtdProfessores].data_nascimento);
     strcpy(professores[qtdProfessores].cpf, obtemCPF());
@@ -55,7 +55,7 @@ int atualizarProfessor(int qtdProfessores, Professor professores[]) {
         return false;
     }
 
-    strcpy(professores[posicaoProfessor].nome, obtemNome());
+    strcpy(professores[posicaoProfessor].nome, obtemNome(MAXNOMEPESSOA));
     professores[posicaoProfessor].sexo = obtemSexo();
     atualizaData(&professores[posicaoProfessor].data_nascimento);
     strcpy(professores[posicaoProfessor].cpf, obtemCPF());

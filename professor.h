@@ -8,7 +8,7 @@ typedef struct
 {
     int ativo;
     int matricula;
-    char nome[MAXNOME];
+    char nome[MAXNOMEPESSOA];
     char sexo;
     Data data_nascimento;
     char cpf[MAXCPF];
