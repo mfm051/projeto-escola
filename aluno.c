@@ -1,33 +1,31 @@
 #include "aluno.h"
+#include "validacoes.h"
+
 #include <stdio.h>
 #include <string.h>
-
-#define VERDADEIRO 1
-#define FALSO 0
+#include <stdbool.h>
 
 int cadastrarAluno(int qtdAlunos, Aluno alunos[], int maxAlunos) {
     int matricula;
     char nome[MAXNOME];
     char sexo;
     int dia, mes, ano;
-    char cpf[MAXCPF];
+    char cpf[MAXCPF + 5];
 
     if (qtdAlunos == maxAlunos) {
         printf("Máximo de alunos atingido!\n");
-        return FALSO;
+        return false;
     }
 
     printf("Matrícula do aluno: ");
     scanf("%d", &matricula);
 
-    if (matricula < 0) {
-        printf("Matrícula inválida!");
-        return FALSO;
-    }
+    if (validaMatricula(matricula) == false)
+        return false;
 
     if (encontraMatricula(qtdAlunos, alunos, matricula) != -1) {
         printf("Matrícula já cadastrada!\n");
-        return FALSO;
+        return false;
     }
 
     alunos[qtdAlunos].matricula = matricula;
@@ -37,26 +35,38 @@ int cadastrarAluno(int qtdAlunos, Aluno alunos[], int maxAlunos) {
     fgets(alunos[qtdAlunos].nome, MAXNOME, stdin);
     alunos[qtdAlunos].nome[strlen(alunos[qtdAlunos].nome) - 1] = 0;
 
-    printf("Sexo do aluno: ");
-    scanf("%c", &alunos[qtdAlunos].sexo);
+    do {
+        printf("Sexo do aluno: ");
+        scanf("%c", &sexo);
+    } while (validaSexo(sexo) == false);
 
-    printf("Data de nascimento (dia/mês/ano): ");
-    scanf("%d/%d/%d", &alunos[qtdAlunos].data_nascimento.dia, &alunos[qtdAlunos].data_nascimento.mes, &alunos[qtdAlunos].data_nascimento.ano);
+    alunos[qtdAlunos].sexo = sexo;
 
-    printf("CPF: ");
-    fgetc(stdin);
-    fgets(alunos[qtdAlunos].cpf, MAXCPF, stdin);
-    alunos[qtdAlunos].cpf[strlen(alunos[qtdAlunos].cpf) - 1] = 0;
 
-    alunos[qtdAlunos].ativo = VERDADEIRO;
+    do {
+        printf("Data de nascimento (dia/mês/ano): ");
+        scanf("%d/%d/%d", &dia, &mes, &ano);
+    } while (validaData(dia, mes, ano) == false);
 
-    return VERDADEIRO;
+    alunos[qtdAlunos].data_nascimento.dia = dia;
+    alunos[qtdAlunos].data_nascimento.mes = mes;
+    alunos[qtdAlunos].data_nascimento.ano = ano;
+
+    do {
+        printf("CPF: ");
+        scanf("%s", &cpf);
+        cpf[MAXCPF] = 0;
+    } while (validaCPF(cpf) == false);
+    strcpy(alunos[qtdAlunos].cpf, cpf);
+
+    alunos[qtdAlunos].ativo = true;
+
+    return true;
 }
 
 void listarAlunos(int qtdAlunos, Aluno alunos[]) {
-    if (qtdAlunos == 0) {
+    if (qtdAlunos == 0)
         printf("Não há alunos cadastrados!\n");
-    } 
     else {
         for (int i = 0; i < qtdAlunos; i++) {
             if (alunos[i].ativo) {
@@ -65,6 +75,7 @@ void listarAlunos(int qtdAlunos, Aluno alunos[]) {
                 printf("Sexo: %c\n", alunos[i].sexo);
                 printf("Data de nascimento: %d/%d/%d\n", alunos[i].data_nascimento.dia, alunos[i].data_nascimento.mes, alunos[i].data_nascimento.ano);
                 printf("CPF: %s\n", alunos[i].cpf);
+                printf("\n");
             }
         }
     }
@@ -77,16 +88,14 @@ int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
     printf("Matrícula do aluno: ");
     scanf("%d", &matricula);
 
-    if (matricula <= 0) {
-        printf("Matrícula inválida!\n");
-        return FALSO;
-    }
+    if (validaMatricula(matricula) == false)
+        return false;
 
     posicaoAluno = encontraMatricula(qtdAlunos, alunos, matricula);
 
     if (posicaoAluno == -1) {
         printf("Matrícula não encontrada!\n");
-        return FALSO;
+        return false;
     }
     else {
         printf("Novo nome: ");
@@ -94,18 +103,34 @@ int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
         fgets(alunos[posicaoAluno].nome, MAXNOME, stdin);
         alunos[posicaoAluno].nome[strlen(alunos[posicaoAluno].nome) - 1] = 0;
 
-        printf("Novo sexo: ");
-        scanf("%c", &alunos[posicaoAluno].sexo);
+        char sexo;
+        do {
+            printf("Sexo do aluno: ");
+            scanf("%c", &sexo);
+        } while (validaSexo(sexo) == false);
+        
+        alunos[posicaoAluno].sexo = sexo;
 
-        printf("Nova data de nascimento (dia/mês/ano): ");
-        scanf("%d/%d/%d", &alunos[posicaoAluno].data_nascimento.dia, &alunos[posicaoAluno].data_nascimento.mes, &alunos[posicaoAluno].data_nascimento.ano);
+        int dia, mes, ano;
+        do {
+            printf("Data de nascimento (dia/mês/ano): ");
+            scanf("%d/%d/%d", &dia, &mes, &ano);
+        } while (validaData(dia, mes, ano) == false);
 
-        printf("Novo CPF: ");
-        fgetc(stdin);
-        fgets(alunos[posicaoAluno].cpf, MAXCPF, stdin);
-        alunos[posicaoAluno].cpf[strlen(alunos[posicaoAluno].cpf) - 1] = 0;
+        alunos[posicaoAluno].data_nascimento.dia = dia;
+        alunos[posicaoAluno].data_nascimento.mes = mes;
+        alunos[posicaoAluno].data_nascimento.ano = ano;
 
-        return VERDADEIRO;
+        char cpf[MAXCPF + 5];
+        do {
+            printf("CPF: ");
+            scanf("%s", &cpf);
+            cpf[MAXCPF] = 0;
+        } while (validaCPF(cpf) == false);
+
+        strcpy(alunos[posicaoAluno].cpf, cpf);
+
+        return true;
     }
 }
 
@@ -116,26 +141,24 @@ int excluirAluno(int qtdAlunos, Aluno alunos[]) {
     printf("Matrícula do aluno: ");
     scanf("%d", &matricula);
 
-    if (matricula <= 0) {
-        printf("Matrícula inválida!\n");
-        return FALSO;
-    }
+    if (validaMatricula(matricula) == false)
+        return false;
 
     posicaoAluno = encontraMatricula(qtdAlunos, alunos, matricula);
 
     if (posicaoAluno == -1) {
         printf("Matrícula não encontrada!\n");
-        return FALSO;
+        return false;
     }
     else
     {
-        alunos[posicaoAluno].ativo = FALSO;
+        alunos[posicaoAluno].ativo = false;
 
         for (int i = posicaoAluno; i < qtdAlunos; i++) {
             alunos[i] = alunos[i + 1];
         };
 
-        return VERDADEIRO;
+        return true;
     }
 }
 
@@ -150,7 +173,7 @@ int obtemOpcaoAluno() {
     printf("4: excluir aluno\n");
 
     scanf("%d", &opcao);
-    
+
     return opcao;
 }
 
