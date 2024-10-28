@@ -51,17 +51,7 @@ void listarDisciplinas (int qtdDisciplinas, Disciplina disciplinas[]) {
                 printf("Código: %d\n", disciplinas[i].codigo);
                 printf("Nome: %s\n", disciplinas[i].nome);
                 printf("Semestre atual: %d.%d\n", disciplinas[i].semestreAtual.ano, disciplinas[i].semestreAtual.periodo);
-                
                 printf("Professor responsável: %s\n", disciplinas[i].professorResponsavel.nome);
-
-                printf("Alunos matriculados:\n");
-                if (disciplinas[i].qtdAlunosMatriculados > 0) {
-                    for (int j = 0; j < disciplinas[i].qtdAlunosMatriculados; j++) {
-                        printf("- %s\n", disciplinas[i].alunosMatriculados[j].nome);
-                    }
-                } else {
-                    printf("Nenhum aluno matriculado.\n");
-                }
                 printf("\n");
             }
         }
