@@ -92,9 +92,26 @@ char *obtemCPF() {
 
 Semestre obtemSemestre() {
     Semestre semestre;
+
+    printf("Semestre:\n");  
     printf("Digite o ano: ");
     scanf("%d", &semestre.ano);
     printf("Digite o período: ");
     scanf("%d", &semestre.periodo);
     return semestre;
+}
+
+void atualizaSemestre (Semestre *semestreAtual) {
+    int ano, periodo;
+
+    do {
+        printf("Semestre atual:\n");
+        printf("Digite o ano: ");
+        scanf("%d", &ano);
+        printf("Digite o período: ");
+        scanf("%d", &periodo);
+    } while (validaSemestre(ano, periodo) == false);
+
+    (*semestreAtual).ano = ano;
+    (*semestreAtual).periodo = periodo;
 }

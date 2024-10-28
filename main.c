@@ -19,6 +19,7 @@ int main()
     int qtdAlunos = 0;
     int qtdProfessores = 0;
     int qtdDisciplinas = 0;
+    int qtdAlunosMatriculados = 0;
 
     printf("\nPROJETO ESCOLA\n");
 
@@ -192,6 +193,36 @@ int main()
                             } else
                                 printf("Exclusão não realizada!\n");
                                 break;
+                        }
+
+                        case 5 /*Matriculados*/: {
+
+                            int opcao;
+                            int sairMatriculados = false;
+
+                            while (!sairMatriculados){
+
+                                opcao = obtemOpcaoMatriculados ();
+
+                                switch (opcao){
+
+                                    case 0: {
+                                        sairMatriculados = true;
+                                        break;
+                                    }
+
+                                    case 1: /*Matricular aluno*/{
+                                        int matriculado = matricularAlunoDisciplina (disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
+                                        if (matriculado) {
+                                            qtdAlunosMatriculados++;
+                                            printf("Aluno cadastrado com sucesso!\n");
+                                        }
+                                        else
+                                            printf("Cadastro não realizado!\n");
+                                        break;
+                                    }
+                                }
+                            }
                         }
 
                         default:
