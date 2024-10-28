@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas) {
+int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas, Professor professores[], int qtdProfessores) {
 
     if (qtdDisciplinas == maxDisciplinas) {
         printf("Máximo de disciplinas atingido!\n");
@@ -22,6 +22,20 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
     disciplinas[qtdDisciplinas].codigo = codigo;
     strcpy(disciplinas[qtdDisciplinas].nome, obtemNome(MAXNOMEDISCIPLINA));
     disciplinas[qtdDisciplinas].semestreAtual = obtemSemestre();
+
+    // Cadastro do professor responsável pela disciplina
+    printf("Professor responsável:\n");
+    int matricula = obtemMatricula();
+    int indiceProfessor = encontraMatriculaProfessor (qtdProfessores, professores, matricula);
+
+    if (indiceProfessor == -1) {
+        printf("Professor não encontrado! Cadastre o professor antes de associá-lo à disciplina.\n");
+        return false;
+    }
+
+    // Associando o professor encontrado
+    disciplinas[qtdDisciplinas].professorResponsavel = professores[indiceProfessor];
+
     disciplinas[qtdDisciplinas].qtdAlunosMatriculados = 0;
     disciplinas[qtdDisciplinas].ativo = true;
 

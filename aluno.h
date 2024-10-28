@@ -19,6 +19,7 @@ void listarAlunos (int qtdAlunos, Aluno alunos[]);
 int atualizarAluno (int qtdAlunos, Aluno alunos[]);
 int excluirAluno (int qtdAlunos, Aluno alunos[]);
 int obtemOpcaoAluno ();
+
 int encontraMatriculaAluno (int qtdAlunos, Aluno alunos[], int matricula);
 
 #endif

@@ -18,7 +18,7 @@ typedef struct
 } Disciplina;
 
 // Funções para manipulação de disciplinas
-int cadastrarDisciplina (int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas);
+int cadastrarDisciplina (int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas, Professor professores[], int qtdProfessores);
 void listarDisciplinas(int qtdDisciplinas, Disciplina disciplinas[]);
 int excluirDisciplina (int qtdDisciplinas, Disciplina disciplinas[]);
 int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[]);
@@ -28,5 +28,6 @@ int obtemOpcaoDisciplina ();
 int encontraCodigoDisciplina(int codigo, int qtdDisciplinas, Disciplina disciplinas[]);
 
 // Funções para cadastro de Alunos/Professores nas disciplinas
+int cadastrarProfessorDisciplina (Disciplina disciplinas[], Professor professores[], int ativo);
 
 #endif

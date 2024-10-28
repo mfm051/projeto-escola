@@ -20,6 +20,8 @@ void listarProfessores (int qtdProfessores, Professor professores[]);
 int atualizarProfessor (int qtdProfessores, Professor professores[]);
 int excluirProfessor (int qtdProfessores, Professor professores[]);
 int obtemOpcaoProfessor ();
+
+// Funções de busca
 int encontraMatriculaProfessor (int qtdProfessores, Professor professores[], int matricula);
 
 #endif

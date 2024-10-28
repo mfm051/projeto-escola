@@ -157,7 +157,7 @@ int main()
                         }
 
                         case 1 /* Cadastrar */: {
-                            int cadastrado = cadastrarDisciplina(qtdDisciplinas, disciplinas, MAXDISCIPLINAS);
+                            int cadastrado = cadastrarDisciplina(qtdDisciplinas, disciplinas, MAXDISCIPLINAS, professores, qtdProfessores);
 
                             if (cadastrado) {
                                 qtdDisciplinas++;
