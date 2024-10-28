@@ -15,13 +15,14 @@ typedef struct
     char cpf[MAXCPF];
 } Professor;
 
+//Funções para manipular as informações dos professores
 int cadastrarProfessor (int qtdProfessores, Professor professores[], int maxProfessores);
 void listarProfessores (int qtdProfessores, Professor professores[]);
 int atualizarProfessor (int qtdProfessores, Professor professores[]);
 int excluirProfessor (int qtdProfessores, Professor professores[]);
 int obtemOpcaoProfessor ();
 
-// Funções de busca
+//Funções auxiliares de busca
 int encontraMatriculaProfessor (int qtdProfessores, Professor professores[], int matricula);
 
 #endif

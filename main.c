@@ -34,7 +34,7 @@ int main()
                 sair = true;
                 break;
             }
-            case 1: {
+            case 1/*Módulo aluno*/: {
                 printf("\nMódulo Aluno\n");
 
                 int sairAluno = false;
@@ -88,7 +88,7 @@ int main()
                 }
                 break;
             }
-            case 2: {
+            case 2/*Módulo professor*/: {
                 printf("\nMódulo Professor\n");
 
                 int sairProfessor = false;
@@ -141,7 +141,7 @@ int main()
                 }  
                 break;
             }
-            case 3: {
+            case 3/*Módulo disciplina*/: {
 
                 printf("\nMódulo Disciplina\n");
 
@@ -195,7 +195,7 @@ int main()
                                 break;
                         }
 
-                        case 5 /*Matriculados*/: {
+                        case 5 /*Pessoas matriculadas*/: {
 
                             int opcao;
                             int sairMatriculados = false;
@@ -206,12 +206,12 @@ int main()
 
                                 switch (opcao){
 
-                                    case 0: {
+                                    case 0: /*Voltar*/ {
                                         sairMatriculados = true;
                                         break;
                                     }
 
-                                    case 1: /*Matricular aluno*/{
+                                    case 1: /*Matricular aluno*/ {
                                         int matriculado = matricularAlunoDisciplina (disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
                                         if (matriculado) {
                                             qtdAlunosMatriculados++;
@@ -222,7 +222,7 @@ int main()
                                         break;
                                     }
 
-                                    case 2: /*Excluir aluno*/{
+                                    case 2: /*Excluir aluno*/ {
                                         int excluido = excluirAlunoDisciplina(disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
                                         if (excluido) {
                                             qtdAlunosMatriculados--;
@@ -231,6 +231,41 @@ int main()
                                         else
                                             printf("Operação não realizada!\n");
                                         break;
+                                    }
+
+                                    case 3: /*Listar matriculados*/ {
+                                        
+                                        int opcaoListar;
+                                        int sairListarMatriculados = false;
+
+                                        while (!sairListarMatriculados){
+
+                                            opcaoListar = obtemOpcaoListarMatriculados ();
+
+                                            switch (opcaoListar){
+
+                                                case 0: /*Voltar*/ {
+                                                    sairListarMatriculados = true;
+                                                    break;
+                                                }
+                                                
+                                                case 1: /*Listar uma disciplina*/ {
+
+                                                }
+
+                                                case 2: /*Lista de alunos matriculados em menos de 3 disciplinas*/{
+
+                                                }
+
+                                                case 3: /*Lista de Disciplinas, com nome do professor, que extrapolam 40 vagas*/{
+                                                    
+                                                }
+
+                                                default:
+                                                    printf ("Opção inválida!");
+                                                    break;
+                                            }
+                                        }
                                     }
                                 }
                             }

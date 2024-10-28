@@ -7,5 +7,6 @@
 #define MAXALUNOS 3
 #define MAXPROFESSORES 3
 #define MAXDISCIPLINAS 3
+#define MAXALUNOSDISCIPLINAS 50
 
 #endif

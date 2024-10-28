@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdbool.h>
 
+//Funções para manipulção de informações na disciplina
 int obtemOpcaoDisciplina (){
     int opcao;
 
@@ -14,7 +15,7 @@ int obtemOpcaoDisciplina (){
     printf("2: listar disciplinas\n");
     printf("3: atualizar disciplina\n");
     printf("4: excluir disciplina\n");
-    printf("5: matriculados\n");
+    printf("5: pessoas matriculadas nas disciplinas\n");
 
     scanf("%d", &opcao);
 
@@ -129,7 +130,7 @@ int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int qtdPro
     return true;
 }
 
-//Opção Matriculados
+//Funções para pessoas matriculadas
 int obtemOpcaoMatriculados (){
     int opcao;
 
@@ -142,6 +143,20 @@ int obtemOpcaoMatriculados (){
     scanf("%d", &opcao);
 
     return opcao;  
+}
+
+int obtemOpcaoListarMatriculados (){
+    int opcaoListar;
+
+    printf("\nOpções Listar Matriculados:\n");
+    printf("0: voltar\n");
+    printf("1: listar uma disciplina\n");
+    printf("2: lista de alunos matriculados em menos de 3 disciplinas\n");
+    printf("3: lista de Disciplinas, com nome do professor, que extrapolam 40 vagas\n");
+
+    scanf("%d", &opcaoListar);
+
+    return opcaoListar;  
 }
 
 int matricularAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno alunos[], int qtdAlunos, int qtdAlunosMatriculados){
@@ -207,8 +222,8 @@ int excluirAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno
     return true;
 }
 
-//Funções auxiliares
 
+//Funções auxiliares
 int encontraCodigoDisciplina(int codigo, int qtdDisciplinas, Disciplina disciplinas[]) {
 
     for (int i = 0; i < qtdDisciplinas; i++) {
