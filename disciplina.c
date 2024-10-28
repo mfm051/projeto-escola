@@ -19,7 +19,7 @@ int obtemOpcaoDisciplina (){
 
     scanf("%d", &opcao);
 
-    return opcao;  
+    return opcao;
 }
 
 int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas, Professor professores[], int qtdProfessores) {
@@ -60,17 +60,13 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
 }
 
 void listarDisciplinas (int qtdDisciplinas, Disciplina disciplinas[]) {
-    if (qtdDisciplinas == 0)
-        printf("Não há disciplinas cadastrados!\n");
-    else {
-        for (int i = 0; i < qtdDisciplinas; i++) {
-            if (disciplinas[i].ativo) {
-                printf("Código: %d\n", disciplinas[i].codigo);
-                printf("Nome: %s\n", disciplinas[i].nome);
-                printf("Semestre atual: %d.%d\n", disciplinas[i].semestreAtual.ano, disciplinas[i].semestreAtual.periodo);
-                printf("Professor responsável: %s\n", disciplinas[i].professorResponsavel.nome);
-                printf("\n");
-            }
+    for (int i = 0; i < qtdDisciplinas; i++) {
+        if (disciplinas[i].ativo) {
+            printf("Código: %d\n", disciplinas[i].codigo);
+            printf("Nome: %s\n", disciplinas[i].nome);
+            printf("Semestre atual: %d.%d\n", disciplinas[i].semestreAtual.ano, disciplinas[i].semestreAtual.periodo);
+            printf("Professor responsável: %s\n", disciplinas[i].professorResponsavel.nome);
+            printf("\n");
         }
     }
 }

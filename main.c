@@ -189,12 +189,17 @@ int main()
                         }
 
                         case LISTAR: {
+                            if (qtdDisciplinas == 0) {
+                                printf("Não há disciplinas cadastrados!\n");
+                                break;
+                            }
+
                             listarDisciplinas(qtdDisciplinas, disciplinas);
                             break;
                         }
 
                         case ATUALIZAR: {
-                            if (atualizarDisciplina(qtdDisciplinas, disciplinas))
+                            if (atualizarDisciplina(qtdDisciplinas, disciplinas, qtdProfessores, professores))
                                 printf("Disciplina atualizada com sucesso!\n");
                             else
                                 printf("Atualização não realizada!\n");
