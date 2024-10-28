@@ -42,15 +42,15 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
     // Cadastro do professor responsável pela disciplina
     printf("Professor responsável:\n");
     int matricula = obtemMatricula();
-    int indiceProfessor = encontraMatriculaProfessor (qtdProfessores, professores, matricula);
+    int posicaoProfessor = encontraMatriculaProfessor (qtdProfessores, professores, matricula);
 
-    if (indiceProfessor == -1) {
-        printf("Professor não encontrado! Cadastre o professor antes de associá-lo à disciplina.\n");
+    if (posicaoProfessor == -1) {
+        printf("Professor não encontrado!\n");
         return false;
     }
 
     // Associando o professor encontrado
-    disciplinas[qtdDisciplinas].professorResponsavel = professores[indiceProfessor];
+    disciplinas[qtdDisciplinas].professorResponsavel = professores[posicaoProfessor];
 
     disciplinas[qtdDisciplinas].qtdAlunosMatriculados = 0;
     disciplinas[qtdDisciplinas].ativo = true;
@@ -103,7 +103,7 @@ int excluirDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
     }
 }
 
-int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
+int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int qtdProfessores, Professor professores []) {
     int codigo = obtemCodigo();
 
     int posicaoDisciplina = encontraCodigoDisciplina(codigo, qtdDisciplinas, disciplinas);
@@ -114,6 +114,17 @@ int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
 
     strcpy(disciplinas[posicaoDisciplina].nome, obtemNome(MAXNOMEDISCIPLINA));
     atualizaSemestre(&disciplinas[posicaoDisciplina].semestreAtual);
+
+    printf("Professor responsável:\n");
+    int matricula = obtemMatricula();
+    int posicaoProfessor = encontraMatriculaProfessor (qtdProfessores, professores, matricula);
+
+    if (posicaoProfessor == -1) {
+        printf("Professor não encontrado!\n");
+        return false;
+    }
+
+    disciplinas[posicaoDisciplina].professorResponsavel = professores[posicaoProfessor];
 
     return true;
 }

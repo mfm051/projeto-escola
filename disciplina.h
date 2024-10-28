@@ -21,7 +21,7 @@ typedef struct
 int cadastrarDisciplina (int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas, Professor professores[], int qtdProfessores);
 void listarDisciplinas(int qtdDisciplinas, Disciplina disciplinas[]);
 int excluirDisciplina (int qtdDisciplinas, Disciplina disciplinas[]);
-int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[]);
+int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int qtdProfessores, Professor professores []);
 int obtemOpcaoDisciplina ();
 int obtemOpcaoMatriculados ();
 

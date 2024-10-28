@@ -175,7 +175,7 @@ int main()
                         }
 
                         case 3 /* Atualizar */: {
-                            int atualizado = atualizarDisciplina(qtdDisciplinas, disciplinas);
+                            int atualizado = atualizarDisciplina(qtdDisciplinas, disciplinas, qtdProfessores, professores);
 
                             if (atualizado)
                                 printf("Disciplina atualizada com sucesso!\n");
