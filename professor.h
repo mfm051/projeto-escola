@@ -1,4 +1,5 @@
 #include "data.h"
+#include "semestre.h"
 #include "constantes.h"
 
 #ifndef PROFESSOR_H
@@ -20,6 +21,5 @@ int atualizarProfessor (int qtdProfessores, Professor professores[]);
 int excluirProfessor (int qtdProfessores, Professor professores[]);
 int obtemOpcaoProfessor ();
 int encontraMatriculaProfessor (int qtdProfessores, Professor professores[], int matricula);
-int buscarProfessorPorMatricula(int matricula, Professor professores[], int qtdProfessores);
 
 #endif

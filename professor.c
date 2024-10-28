@@ -99,4 +99,3 @@ int buscarProfessorPorMatricula(int matricula, Professor professores[], int qtdP
     }
     return -1;
 }
-

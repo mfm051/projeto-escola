@@ -89,3 +89,12 @@ char *obtemCPF() {
 
     return cpf;
 }
+
+Semestre obtemSemestre() {
+    Semestre semestre;
+    printf("Digite o ano: ");
+    scanf("%d", &semestre.ano);
+    printf("Digite o período: ");
+    scanf("%d", &semestre.periodo);
+    return semestre;
+}
