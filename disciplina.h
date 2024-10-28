@@ -23,13 +23,14 @@ void listarDisciplinas(int qtdDisciplinas, Disciplina disciplinas[]);
 int excluirDisciplina (int qtdDisciplinas, Disciplina disciplinas[]);
 int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int qtdProfessores, Professor professores []);
 int obtemOpcaoDisciplina ();
-int obtemOpcaoMatriculados ();
 
 // Funções auxiliares de busca
 int encontraCodigoDisciplina(int codigo, int qtdDisciplinas, Disciplina disciplinas[]);
 
 // Funções para cadastro de Alunos/Professores nas disciplinas
+int obtemOpcaoMatriculados ();
 int cadastrarProfessorDisciplina (Disciplina disciplinas[], Professor professores[], int ativo);
 int matricularAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno alunos[], int qtdAlunos, int qtdAlunosMatriculados);
+int excluirAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno alunos[], int qtdAlunos, int qtdAlunosMatriculados);
 
 #endif

@@ -129,6 +129,7 @@ int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int qtdPro
     return true;
 }
 
+//Opção Matriculados
 int obtemOpcaoMatriculados (){
     int opcao;
 
@@ -179,17 +180,34 @@ int matricularAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Al
     return true;
 }
 
+int excluirAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno alunos [], int qtdAlunos, int qtdAlunosMatriculados){
+    printf("Disciplina:\n");
+    int codigo = obtemCodigo();
+
+    int posicaoDisciplina = encontraCodigoDisciplina (codigo, qtdDisciplinas, disciplinas);
+    if (posicaoDisciplina == -1) {
+        printf("Disciplina não encontrada!.\n");
+        return false;
+    }
+
+    printf("Aluno que deseja excluir:\n");   
+    int matricula = obtemMatricula();
+    int posicaoAluno = encontraMatriculaAluno(qtdAlunos, alunos, matricula);
+
+    if (posicaoAluno == -1) {
+        printf("Matrícula não encontrada!\n");
+        return false;
+    }
+    
+    disciplinas[posicaoDisciplina].alunosMatriculados[posicaoAluno].ativo = false;
+
+    for (int i = posicaoAluno; i < qtdAlunosMatriculados; i++)
+        alunos[i] = alunos[i + 1];
+    
+    return true;
+}
 
 //Funções auxiliares
-
-int encontraNomeDisciplina(int qtdDisciplinas, Disciplina disciplinas[], char nome[]) {
-    for (int i = 0; i < qtdDisciplinas; i++) {
-        if (strcmp(disciplinas[i].nome, nome) == 0 && disciplinas[i].ativo) {
-            return i;
-        }
-    }
-    return -1;
-}
 
 int encontraCodigoDisciplina(int codigo, int qtdDisciplinas, Disciplina disciplinas[]) {
 

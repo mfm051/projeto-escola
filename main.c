@@ -221,6 +221,17 @@ int main()
                                             printf("Cadastro não realizado!\n");
                                         break;
                                     }
+
+                                    case 2: /*Excluir aluno*/{
+                                        int excluido = excluirAlunoDisciplina(disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
+                                        if (excluido) {
+                                            qtdAlunosMatriculados--;
+                                            printf("Aluno excluído com sucesso!\n");
+                                        }
+                                        else
+                                            printf("Operação não realizada!\n");
+                                        break;
+                                    }
                                 }
                             }
                         }
