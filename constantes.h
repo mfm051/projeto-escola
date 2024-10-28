@@ -9,6 +9,20 @@
 #define MAXPROFESSORES 3
 #define MAXDISCIPLINAS 3
 
+/* Módulos */
+#define SAIR 0
+#define ALUNO 1
+#define PROFESSOR 2
+#define DISCIPLINA 3
+
+/* Opções de módulo */
+#define VOLTAR 0
+#define CADASTRAR 1
+#define LISTAR 2
+#define ATUALIZAR 3
+#define EXCLUIR 4
+
+
 /* Opções listagem */
 #define LISTAGEMGERAL 1
 #define LISTAGEMFEM 2

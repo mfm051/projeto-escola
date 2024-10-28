@@ -6,6 +6,7 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
+int obtemModulo();
 int obtemOpcaoModulo();
 int obtemOpcaoListagem();
 int obtemMatricula();

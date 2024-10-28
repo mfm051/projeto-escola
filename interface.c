@@ -5,6 +5,20 @@
 #include <string.h>
 #include <stdlib.h>
 
+int obtemModulo() {
+    int opcao;
+
+    printf("\nOpções:\n");
+    printf("0: sair\n");
+    printf("1: aluno\n");
+    printf("2: professor\n");
+    printf("3: disciplina\n");
+
+    scanf("%d", &opcao);
+
+    return opcao;
+}
+
 int obtemOpcaoModulo(){
     int opcao;
 

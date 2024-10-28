@@ -30,18 +30,27 @@ int cadastrarProfessor (int qtdProfessores, Professor professores[], int maxProf
 }
 
 void listarProfessores(int qtdProfessores, Professor professores[]) {
-    if (qtdProfessores == 0) {
-        printf("Não há professores cadastrados!\n");
-    } else {
-        for (int i = 0; i < qtdProfessores; i++) {
-            if (professores[i].ativo) {
-                printf("Matrícula: %d\n", professores[i].matricula);
-                printf("Nome: %s\n", professores[i].nome);
-                printf("Sexo: %c\n", professores[i].sexo);
-                printf("Data de nascimento: %d/%d/%d\n", professores[i].data_nascimento.dia, professores[i].data_nascimento.mes, professores[i].data_nascimento.ano);
-                printf("CPF: %s\n", professores[i].cpf);
-                printf("\n");
-            }
+    for (int i = 0; i < qtdProfessores; i++) {
+        if (professores[i].ativo) {
+            printf("Matrícula: %d\n", professores[i].matricula);
+            printf("Nome: %s\n", professores[i].nome);
+            printf("Sexo: %c\n", professores[i].sexo);
+            printf("Data de nascimento: %d/%d/%d\n", professores[i].data_nascimento.dia, professores[i].data_nascimento.mes, professores[i].data_nascimento.ano);
+            printf("CPF: %s\n", professores[i].cpf);
+            printf("\n");
+        }
+    }
+}
+
+void listarProfessoresPorSexo (char sexo, int qtdProfessores, Professor professores[]) {
+    for (int i = 0; i < qtdProfessores; i++) {
+        if (professores[i].ativo && professores[i].sexo == sexo) {
+            printf("Matrícula: %d\n", professores[i].matricula);
+            printf("Nome: %s\n", professores[i].nome);
+            printf("Sexo: %c\n", professores[i].sexo);
+            printf("Data de nascimento: %d/%d/%d\n", professores[i].data_nascimento.dia, professores[i].data_nascimento.mes, professores[i].data_nascimento.ano);
+            printf("CPF: %s\n", professores[i].cpf);
+            printf("\n");
         }
     }
 }

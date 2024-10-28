@@ -7,9 +7,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-// Protótipos
-int obtemOpcaoGeral ();
-
 int main()
 {
     Aluno alunos[MAXALUNOS];
@@ -26,28 +23,24 @@ int main()
     int sair = false;
 
     while (!sair) {
-        opcao = obtemOpcaoGeral();
-
-        switch (opcao) {
-            case 0: {
+        switch (obtemModulo()) {
+            case SAIR: {
                 sair = true;
                 break;
             }
-            case 1: {
+            case ALUNO: {
                 printf("\nMódulo Aluno\n");
 
                 int sairAluno = false;
 
                 while (!sairAluno) {
                     switch (obtemOpcaoModulo()) {
-                        case 0 /* Sair */: {
+                        case SAIR: {
                             sairAluno = true;
                             break;
                         }
-                        case 1 /* Cadastrar */: {
-                            int cadastrado = cadastrarAluno(qtdAlunos, alunos, MAXALUNOS);
-
-                            if (cadastrado) {
+                        case CADASTRAR: {
+                            if (cadastrarAluno(qtdAlunos, alunos, MAXALUNOS)) {
                                 qtdAlunos++;
                                 printf("Aluno cadastrado com sucesso!\n");
                             }
@@ -56,7 +49,12 @@ int main()
 
                             break;
                         }
-                        case 2 /* Listar */: {
+                        case LISTAR: {
+                            if (qtdAlunos == 0) {
+                                printf("Não há alunos cadastrados!\n");
+                                break;
+                            }
+
                             switch(obtemOpcaoListagem()) {
                                 case LISTAGEMGERAL: {
                                     listarAlunos(qtdAlunos, alunos);
@@ -75,20 +73,16 @@ int main()
                             }
                             break;
                         }
-                        case 3 /* Atualizar */: {
-                            int atualizado = atualizarAluno(qtdAlunos, alunos);
-
-                            if (atualizado)
+                        case ATUALIZAR: {
+                            if (atualizarAluno(qtdAlunos, alunos))
                                 printf("Aluno atualizado com sucesso!\n");
                             else
                                 printf("Atualização não realizada!\n");
 
                             break;
                         }
-                        case 4 /* Excluir */: {
-                            int excluido = excluirAluno(qtdAlunos, alunos);
-
-                            if (excluido) {
+                        case EXCLUIR: {
+                            if (excluirAluno(qtdAlunos, alunos)) {
                                 printf("Aluno excluído com sucesso!\n");
                                 qtdAlunos--;
                             } else
@@ -102,21 +96,19 @@ int main()
                 }
                 break;
             }
-            case 2: {
+            case PROFESSOR: {
                 printf("\nMódulo Professor\n");
 
                 int sairProfessor = false;
 
                 while (!sairProfessor) {
                     switch (obtemOpcaoModulo()) {
-                        case 0 /* Sair */: {
+                        case SAIR: {
                             sairProfessor = true;
                             break;
                         }
-                        case 1 /* Cadastrar */: {
-                            int cadastrado = cadastrarProfessor(qtdProfessores, professores, MAXPROFESSORES);
-
-                            if (cadastrado) {
+                        case CADASTRAR: {
+                            if (cadastrarProfessor(qtdProfessores, professores, MAXPROFESSORES)) {
                                 qtdProfessores++;
                                 printf("Professor cadastrado com sucesso!\n");
                             }
@@ -125,24 +117,40 @@ int main()
 
                             break;
                         }
-                        case 2 /* Listar */: {
-                            listarProfessores(qtdProfessores, professores);
+                        case LISTAR: {
+                            if (qtdProfessores == 0) {
+                                printf("Não há professores cadastrados!\n");
+                                break;
+                            }
+
+                            switch(obtemOpcaoListagem()) {
+                                case LISTAGEMGERAL: {
+                                    listarProfessores(qtdProfessores, professores);
+                                    break;
+                                }
+                                case LISTAGEMFEM: {
+                                    listarProfessoresPorSexo('F', qtdProfessores, professores);
+                                    break;
+                                }
+                                case LISTAGEMMASC: {
+                                    listarProfessoresPorSexo('M', qtdProfessores, professores);
+                                    break;
+                                }
+                                default:
+                                    break;
+                            }
                             break;
                         }
-                        case 3 /* Atualizar */: {
-                            int atualizado = atualizarProfessor (qtdProfessores, professores);
-
-                            if (atualizado)
+                        case ATUALIZAR: {
+                            if (atualizarProfessor (qtdProfessores, professores))
                                 printf("Professor atualizado com sucesso!\n");
                             else
                                 printf("Atualização não realizada!\n");
 
                             break;
                         }
-                        case 4 /* Excluir */: {
-                            int excluido = excluirProfessor(qtdProfessores, professores);
-
-                            if (excluido) {
+                        case EXCLUIR: {
+                            if (excluirProfessor(qtdProfessores, professores)) {
                                 printf("Professor excluído com sucesso!\n");
                                 qtdProfessores--;
                             } else
@@ -152,10 +160,10 @@ int main()
                         default:
                             printf("Opção inválida!\n");
                     }
-                }  
+                }
                 break;
             }
-            case 3: {
+            case DISCIPLINA: {
 
                 printf("\nMódulo Disciplina\n");
 
@@ -163,18 +171,14 @@ int main()
                 int sairDisciplina = false;
 
                 while (!sairDisciplina) {
-                    opcaoDisciplina = obtemOpcaoDisciplina();
-
-                    switch (opcaoDisciplina) {
-                        case 0 /* Sair */: {
+                    switch (obtemOpcaoDisciplina()) {
+                        case SAIR: {
                             sairDisciplina = true;
                             break;
                         }
 
-                        case 1 /* Cadastrar */: {
-                            int cadastrado = cadastrarDisciplina(qtdDisciplinas, disciplinas, MAXDISCIPLINAS, professores, qtdProfessores);
-
-                            if (cadastrado) {
+                        case CADASTRAR: {
+                            if (cadastrarDisciplina(qtdDisciplinas, disciplinas, MAXDISCIPLINAS, professores, qtdProfessores)) {
                                 qtdDisciplinas++;
                                 printf("Disciplina cadastrada com sucesso!\n");
                             }
@@ -183,58 +187,39 @@ int main()
                             break;
                         }
 
-                        case 2 /* Listar */: {
+                        case LISTAR: {
                             listarDisciplinas(qtdDisciplinas, disciplinas);
                             break;
                         }
 
-                        case 3 /* Atualizar */: {
-                            int atualizado = atualizarDisciplina(qtdDisciplinas, disciplinas);
-
-                            if (atualizado)
+                        case ATUALIZAR: {
+                            if (atualizarDisciplina(qtdDisciplinas, disciplinas))
                                 printf("Disciplina atualizada com sucesso!\n");
                             else
                                 printf("Atualização não realizada!\n");
                             break;
                         }
 
-                        case 4 /* Excluir */: {
-                            int excluido = excluirDisciplina(qtdDisciplinas, disciplinas);
-
-                            if (excluido) {
+                        case EXCLUIR: {
+                            if (excluirDisciplina(qtdDisciplinas, disciplinas)) {
                                 printf("Disciplina excluída com sucesso!\n");
                                 qtdDisciplinas--;
-                            } else
+                            }
+                            else
                                 printf("Exclusão não realizada!\n");
-                                break;
+
+                            break;
                         }
 
                         default:
-                            printf("Opção inválida!\n");                       
+                            printf("Opção inválida!\n");
                     }
-                }  
-                break;               
-
+                }
+                break;
             }
 
             default:
                 printf("Opção inválida!\n");
         }
     }
-}
-
-// Funções
-
-int obtemOpcaoGeral() {
-    int opcao;
-
-    printf("\nOpções:\n");
-    printf("0: sair\n");
-    printf("1: aluno\n");
-    printf("2: professor\n");
-    printf("3: disciplina\n");
-
-    scanf("%d", &opcao);
-    
-    return opcao;
 }
