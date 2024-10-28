@@ -16,6 +16,7 @@ int main()
     int qtdAlunos = 0;
     int qtdProfessores = 0;
     int qtdDisciplinas = 0;
+    int qtdAlunosMatriculados = 0;
 
     printf("\nPROJETO ESCOLA\n");
 
@@ -209,6 +210,82 @@ int main()
                                 printf("Exclusão não realizada!\n");
 
                             break;
+                        }
+
+                        case 5 /*Pessoas matriculadas*/: {
+
+                            int opcao;
+                            int sairMatriculados = false;
+
+                            while (!sairMatriculados){
+
+                                opcao = obtemOpcaoMatriculados ();
+
+                                switch (opcao){
+
+                                    case 0: /*Voltar*/ {
+                                        sairMatriculados = true;
+                                        break;
+                                    }
+
+                                    case 1: /*Matricular aluno*/ {
+                                        int matriculado = matricularAlunoDisciplina (disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
+                                        if (matriculado) {
+                                            qtdAlunosMatriculados++;
+                                            printf("Aluno cadastrado com sucesso!\n");
+                                        }
+                                        else
+                                            printf("Cadastro não realizado!\n");
+                                        break;
+                                    }
+
+                                    case 2: /*Excluir aluno*/ {
+                                        int excluido = excluirAlunoDisciplina(disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
+                                        if (excluido) {
+                                            qtdAlunosMatriculados--;
+                                            printf("Aluno excluído com sucesso!\n");
+                                        }
+                                        else
+                                            printf("Operação não realizada!\n");
+                                        break;
+                                    }
+
+                                    case 3: /*Listar matriculados*/ {
+                                        
+                                        int opcaoListar;
+                                        int sairListarMatriculados = false;
+
+                                        while (!sairListarMatriculados){
+
+                                            opcaoListar = obtemOpcaoListarMatriculados ();
+
+                                            switch (opcaoListar){
+
+                                                case 0: /*Voltar*/ {
+                                                    sairListarMatriculados = true;
+                                                    break;
+                                                }
+                                                
+                                                case 1: /*Listar uma disciplina*/ {
+
+                                                }
+
+                                                case 2: /*Lista de alunos matriculados em menos de 3 disciplinas*/{
+
+                                                }
+
+                                                case 3: /*Lista de Disciplinas, com nome do professor, que extrapolam 40 vagas*/{
+                                                    
+                                                }
+
+                                                default:
+                                                    printf ("Opção inválida!");
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
 
                         default:

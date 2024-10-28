@@ -5,6 +5,23 @@
 #include <string.h>
 #include <stdbool.h>
 
+//Funções para manipulção de informações na disciplina
+int obtemOpcaoDisciplina (){
+    int opcao;
+
+    printf("\nOpções Disciplina:\n");
+    printf("0: voltar\n");
+    printf("1: cadastrar disciplina\n");
+    printf("2: listar disciplinas\n");
+    printf("3: atualizar disciplina\n");
+    printf("4: excluir disciplina\n");
+    printf("5: pessoas matriculadas nas disciplinas\n");
+
+    scanf("%d", &opcao);
+
+    return opcao;  
+}
+
 int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDisciplinas, Professor professores[], int qtdProfessores) {
 
     if (qtdDisciplinas == maxDisciplinas) {
@@ -26,15 +43,15 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
     // Cadastro do professor responsável pela disciplina
     printf("Professor responsável:\n");
     int matricula = obtemMatricula();
-    int indiceProfessor = encontraMatriculaProfessor (qtdProfessores, professores, matricula);
+    int posicaoProfessor = encontraMatriculaProfessor (qtdProfessores, professores, matricula);
 
-    if (indiceProfessor == -1) {
-        printf("Professor não encontrado! Cadastre o professor antes de associá-lo à disciplina.\n");
+    if (posicaoProfessor == -1) {
+        printf("Professor não encontrado!\n");
         return false;
     }
 
     // Associando o professor encontrado
-    disciplinas[qtdDisciplinas].professorResponsavel = professores[indiceProfessor];
+    disciplinas[qtdDisciplinas].professorResponsavel = professores[posicaoProfessor];
 
     disciplinas[qtdDisciplinas].qtdAlunosMatriculados = 0;
     disciplinas[qtdDisciplinas].ativo = true;
@@ -51,17 +68,7 @@ void listarDisciplinas (int qtdDisciplinas, Disciplina disciplinas[]) {
                 printf("Código: %d\n", disciplinas[i].codigo);
                 printf("Nome: %s\n", disciplinas[i].nome);
                 printf("Semestre atual: %d.%d\n", disciplinas[i].semestreAtual.ano, disciplinas[i].semestreAtual.periodo);
-                
                 printf("Professor responsável: %s\n", disciplinas[i].professorResponsavel.nome);
-
-                printf("Alunos matriculados:\n");
-                if (disciplinas[i].qtdAlunosMatriculados > 0) {
-                    for (int j = 0; j < disciplinas[i].qtdAlunosMatriculados; j++) {
-                        printf("- %s\n", disciplinas[i].alunosMatriculados[j].nome);
-                    }
-                } else {
-                    printf("Nenhum aluno matriculado.\n");
-                }
                 printf("\n");
             }
         }
@@ -97,43 +104,126 @@ int excluirDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
     }
 }
 
-int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[]) {
-    int codigo;
-    printf("Digite o código da disciplina a ser atualizada: ");
-    scanf("%d", &codigo);
-    int indice = encontraCodigoDisciplina(codigo, qtdDisciplinas, disciplinas);
-    if (indice != -1) {
-        printf("Digite o novo nome da disciplina: ");
-        scanf("%s", disciplinas[indice].nome);
-        return 1;
+int atualizarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int qtdProfessores, Professor professores []) {
+    int codigo = obtemCodigo();
+
+    int posicaoDisciplina = encontraCodigoDisciplina(codigo, qtdDisciplinas, disciplinas);
+        if (posicaoDisciplina == -1) {
+        printf("Disciplina não encontrada!\n");
+        return false;
+        }
+
+    strcpy(disciplinas[posicaoDisciplina].nome, obtemNome(MAXNOMEDISCIPLINA));
+    atualizaSemestre(&disciplinas[posicaoDisciplina].semestreAtual);
+
+    printf("Professor responsável:\n");
+    int matricula = obtemMatricula();
+    int posicaoProfessor = encontraMatriculaProfessor (qtdProfessores, professores, matricula);
+
+    if (posicaoProfessor == -1) {
+        printf("Professor não encontrado!\n");
+        return false;
     }
-    return 0;
+
+    disciplinas[posicaoDisciplina].professorResponsavel = professores[posicaoProfessor];
+
+    return true;
 }
 
-int obtemOpcaoDisciplina (){
+//Funções para pessoas matriculadas
+int obtemOpcaoMatriculados (){
     int opcao;
 
-    printf("\nOpções Disciplina:\n");
+    printf("\nOpções Matriculados:\n");
     printf("0: voltar\n");
-    printf("1: cadastrar disciplina\n");
-    printf("2: listar disciplinas\n");
-    printf("3: atualizar disciplina\n");
-    printf("4: excluir disciplina\n");
+    printf("1: matricular aluno\n");
+    printf("2: excluir aluno\n");
+    printf("3: listar matriculados\n");
 
     scanf("%d", &opcao);
 
     return opcao;  
 }
 
-int encontraNomeDisciplina(int qtdDisciplinas, Disciplina disciplinas[], char nome[]) {
-    for (int i = 0; i < qtdDisciplinas; i++) {
-        if (strcmp(disciplinas[i].nome, nome) == 0 && disciplinas[i].ativo) {
-            return i;
-        }
-    }
-    return -1;
+int obtemOpcaoListarMatriculados (){
+    int opcaoListar;
+
+    printf("\nOpções Listar Matriculados:\n");
+    printf("0: voltar\n");
+    printf("1: listar uma disciplina\n");
+    printf("2: lista de alunos matriculados em menos de 3 disciplinas\n");
+    printf("3: lista de Disciplinas, com nome do professor, que extrapolam 40 vagas\n");
+
+    scanf("%d", &opcaoListar);
+
+    return opcaoListar;  
 }
 
+int matricularAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno alunos[], int qtdAlunos, int qtdAlunosMatriculados){
+
+    printf("Disciplina:\n");
+    int codigo = obtemCodigo();
+
+    int posicaoDisciplina = encontraCodigoDisciplina (codigo, qtdDisciplinas, disciplinas);
+    if (posicaoDisciplina == -1) {
+        printf("Disciplina não encontrada!.\n");
+        return false;
+    }
+
+    printf("Aluno que deseja matricular:\n");
+    int matricula = obtemMatricula();
+    int posicaoAluno = encontraMatriculaAluno (qtdAlunos, alunos, matricula);
+
+    if (posicaoAluno == -1) {
+        printf("Aluno não encontrado!\n");
+        return false;
+    }
+
+    if (disciplinas[posicaoDisciplina].qtdAlunosMatriculados < MAXALUNOS) {
+
+        disciplinas[posicaoDisciplina].alunosMatriculados[disciplinas[posicaoDisciplina].qtdAlunosMatriculados] = alunos[posicaoAluno];
+        disciplinas[posicaoDisciplina].qtdAlunosMatriculados++;
+        disciplinas[posicaoDisciplina].ativo = true;
+
+        return true;
+
+    } else {
+        printf("Não há vagas disponíveis nesta disciplina.\n");
+        return false;
+    }
+
+    return true;
+}
+
+int excluirAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno alunos [], int qtdAlunos, int qtdAlunosMatriculados){
+    printf("Disciplina:\n");
+    int codigo = obtemCodigo();
+
+    int posicaoDisciplina = encontraCodigoDisciplina (codigo, qtdDisciplinas, disciplinas);
+    if (posicaoDisciplina == -1) {
+        printf("Disciplina não encontrada!.\n");
+        return false;
+    }
+
+    printf("Aluno que deseja excluir:\n");   
+    int matricula = obtemMatricula();
+    int posicaoAluno = encontraMatriculaAluno(qtdAlunos, alunos, matricula);
+
+    if (posicaoAluno == -1) {
+        printf("Matrícula não encontrada!\n");
+        return false;
+    }
+    
+    disciplinas[posicaoDisciplina].alunosMatriculados[posicaoAluno].ativo = false;
+
+    for (int i = posicaoAluno; i < qtdAlunosMatriculados; i++)
+        alunos[i] = alunos[i + 1];
+    
+    return true;
+}
+
+
+//Funções auxiliares
 int encontraCodigoDisciplina(int codigo, int qtdDisciplinas, Disciplina disciplinas[]) {
 
     for (int i = 0; i < qtdDisciplinas; i++) {

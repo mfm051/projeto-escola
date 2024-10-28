@@ -6,6 +6,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 
+//Funções para manipular as informações dos professores
 int cadastrarProfessor (int qtdProfessores, Professor professores[], int maxProfessores) {
     if (qtdProfessores == maxProfessores) {
         printf("Máximo de professores atingido!\n");
@@ -90,6 +91,7 @@ int excluirProfessor(int qtdProfessores, Professor professores[]) {
     return true;
 }
 
+//Funções auxiliares de busca
 int encontraMatriculaProfessor(int qtdProfessores, Professor professores[], int matricula) {
     int posicaoProfessor = -1;
 

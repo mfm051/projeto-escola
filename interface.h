@@ -16,5 +16,6 @@ char *obtemNome(int maxChars);
 void atualizaData(Data *data);
 char *obtemCPF();
 Semestre obtemSemestre();
+void atualizaSemestre(Semestre *semestreAtual);
 
 #endif
