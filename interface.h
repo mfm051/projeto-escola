@@ -7,6 +7,7 @@
 #define INTERFACE_H
 
 int obtemOpcaoModulo();
+int obtemOpcaoListagem();
 int obtemMatricula();
 int obtemCodigo();
 char obtemSexo();

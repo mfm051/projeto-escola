@@ -17,7 +17,21 @@ int obtemOpcaoModulo(){
 
     scanf("%d", &opcao);
 
-    return opcao;  
+    return opcao;
+}
+
+int obtemOpcaoListagem() {
+    int opcao;
+
+    printf("\nOpções :\n");
+    printf("0: Cancelar\n");
+    printf("1: Listagem geral\n");
+    printf("2: Listagem sexo feminino\n");
+    printf("3: Listagem sexo masculino\n");
+
+    scanf("%d", &opcao);
+
+    return opcao;
 }
 
 int obtemMatricula() {

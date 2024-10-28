@@ -57,7 +57,22 @@ int main()
                             break;
                         }
                         case 2 /* Listar */: {
-                            listarAlunos(qtdAlunos, alunos);
+                            switch(obtemOpcaoListagem()) {
+                                case LISTAGEMGERAL: {
+                                    listarAlunos(qtdAlunos, alunos);
+                                    break;
+                                }
+                                case LISTAGEMFEM: {
+                                    listarAlunosPorSexo('F', qtdAlunos, alunos);
+                                    break;
+                                }
+                                case LISTAGEMMASC: {
+                                    listarAlunosPorSexo('M', qtdAlunos, alunos);
+                                    break;
+                                }
+                                default:
+                                    break;
+                            }
                             break;
                         }
                         case 3 /* Atualizar */: {
