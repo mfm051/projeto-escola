@@ -55,6 +55,27 @@ void listarAlunosPorSexo(char sexo, int qtdAlunos, Aluno alunos[]) {
     }
 }
 
+void listarAlunosAlfabeticamente(int qtdAlunos, Aluno alunos[]) {
+    Aluno copiaAlunos[qtdAlunos];
+    for (int i = 0; i < qtdAlunos; i++)
+        copiaAlunos[i] = alunos[i];
+
+    Aluno temp;
+    for (int i = 0; i < qtdAlunos; i++) {
+
+        for (int j = 0; j < qtdAlunos - 1 - i; j++) {
+
+            if (strcmp(copiaAlunos[j].nome, copiaAlunos[j + 1].nome) > 0) {
+                temp = copiaAlunos[j];
+                copiaAlunos[j] = copiaAlunos[j + 1];
+                copiaAlunos[j + 1] = temp;
+            }
+        }
+    }
+
+    listarAlunos(qtdAlunos, copiaAlunos);
+}
+
 int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
     int matricula = obtemMatricula();
 

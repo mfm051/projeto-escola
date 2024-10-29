@@ -28,5 +28,6 @@
 #define LISTAGEMGERAL 1
 #define LISTAGEMFEM 2
 #define LISTAGEMMASC 3
+#define LISTAGEMALFABETICA 4
 
 #endif

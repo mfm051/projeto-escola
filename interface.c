@@ -42,6 +42,7 @@ int obtemOpcaoListagem() {
     printf("1: Listagem geral\n");
     printf("2: Listagem sexo feminino\n");
     printf("3: Listagem sexo masculino\n");
+    printf("4: Listagem por ordem alfabética\n");
 
     scanf("%d", &opcao);
 

@@ -69,6 +69,10 @@ int main()
                                     listarAlunosPorSexo('M', qtdAlunos, alunos);
                                     break;
                                 }
+                                case LISTAGEMALFABETICA: {
+                                    listarAlunosAlfabeticamente(qtdAlunos, alunos);
+                                    break;
+                                }
                                 default:
                                     break;
                             }
