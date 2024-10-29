@@ -249,7 +249,6 @@ int main()
                                     case 2: /*Excluir aluno*/ {
                                         int excluido = excluirAlunoDisciplina(disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
                                         if (excluido) {
-                                            qtdAlunosMatriculados--;
                                             printf("Aluno excluído com sucesso!\n");
                                         }
                                         else
@@ -279,7 +278,8 @@ int main()
                                                 }
 
                                                 case 2: /*Lista de alunos matriculados em menos de 3 disciplinas*/{
-
+                                                    listarAlunosMenosDeTresDisciplinas(qtdDisciplinas, disciplinas, alunos, qtdAlunos);
+                                                    break;
                                                 }
 
                                                 case 3: /*Lista de Disciplinas, com nome do professor, que extrapolam 40 vagas*/{
