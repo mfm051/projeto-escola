@@ -109,6 +109,19 @@ void listarAlunosPorNascimento(int qtdAlunos, Aluno alunos[]) {
     listarAlunos(qtdAlunos, copiaAlunos);
 }
 
+void listarAlunosAniversariantes(int mes, int qtdAlunos, Aluno alunos[]) {
+    for (int i = 0; i < qtdAlunos; i++) {
+        if (alunos[i].ativo && checarAniversariante(alunos[i].data_nascimento, mes)) {
+            printf("Matrícula: %d\n", alunos[i].matricula);
+            printf("Nome: %s\n", alunos[i].nome);
+            printf("Sexo: %c\n", alunos[i].sexo);
+            printf("Data de nascimento: %d/%d/%d\n", alunos[i].data_nascimento.dia, alunos[i].data_nascimento.mes, alunos[i].data_nascimento.ano);
+            printf("CPF: %s\n", alunos[i].cpf);
+            printf("\n");
+        }
+    }
+}
+
 int atualizarAluno(int qtdAlunos, Aluno alunos[]) {
     int matricula = obtemMatricula();
 

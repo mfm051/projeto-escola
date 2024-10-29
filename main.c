@@ -1,4 +1,3 @@
-#include "escola.h"
 #include "aluno.h"
 #include "professor.h"
 #include "disciplina.h"
@@ -323,7 +322,12 @@ int main()
             }
             case ANIVERSARIANTES: {
                 int mes = obtemMesAniversario();
-                listarAniversariantes(mes, qtdAlunos, alunos, qtdProfessores, professores);
+
+                printf("Alunos:\n");
+                listarAlunosAniversariantes(mes, qtdAlunos, alunos);
+
+                printf("Professores:\n");
+                listarProfessoresAniversariantes(mes, qtdProfessores, professores);
                 break;
             }
             case BUSCA: {
