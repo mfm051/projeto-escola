@@ -141,6 +141,10 @@ int main()
                                     listarProfessoresPorSexo('M', qtdProfessores, professores);
                                     break;
                                 }
+                                case LISTAGEMALFABETICA: {
+                                    listarProfessoresAlfabeticamente(qtdProfessores, professores);
+                                    break;
+                                }
                                 default:
                                     break;
                             }
