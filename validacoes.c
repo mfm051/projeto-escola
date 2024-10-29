@@ -43,7 +43,7 @@ int validaData(int dia, int mes, int ano) {
 int validaCPF(char cpf[]) {
     if (strlen(cpf) != 11)
     {
-        printf("CPF inválido");
+        printf("CPF inválido\n");
         return false;
     }
 

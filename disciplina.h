@@ -33,6 +33,6 @@ int obtemOpcaoListarMatriculados ();
 int cadastrarProfessorDisciplina (Disciplina disciplinas[], Professor professores[], int ativo);
 int matricularAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno alunos[], int qtdAlunos, int qtdAlunosMatriculados);
 int excluirAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno alunos[], int qtdAlunos, int qtdAlunosMatriculados);
-void listarPessoasMatriculadas (int qtdAlunos, Aluno alunos[], int qtdProfessores, Professor professores[], int qtdDisciplinas, Disciplina disciplinas[], Professor professorResponsavel, Aluno alunosMatriculados[MAXALUNOS], int qtdAlunosMatriculados);
+void listarDisciplinaAlunos (int qtdDisciplinas, Disciplina disciplinas[]);
 
 #endif
