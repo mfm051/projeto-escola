@@ -1,3 +1,4 @@
+#include "escola.h"
 #include "aluno.h"
 #include "professor.h"
 #include "disciplina.h"
@@ -319,7 +320,11 @@ int main()
                 }
                 break;
             }
-
+            case ANIVERSARIANTES: {
+                int mes = obtemMesAniversario();
+                listarAniversariantes(mes, qtdAlunos, alunos, qtdProfessores, professores);
+                break;
+            }
             default:
                 printf("Opção inválida!\n");
         }

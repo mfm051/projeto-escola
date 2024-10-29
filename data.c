@@ -10,3 +10,7 @@ int comparaData(Data a, Data b) {
     else
         return -1;
 }
+
+int checarAniversariante(Data data, int mes) {
+    return data.mes == mes;
+}

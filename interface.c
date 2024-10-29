@@ -13,6 +13,7 @@ int obtemModulo() {
     printf("1: aluno\n");
     printf("2: professor\n");
     printf("3: disciplina\n");
+    printf("4: aniversariantes\n");
 
     scanf("%d", &opcao);
 
@@ -118,6 +119,17 @@ char *obtemCPF() {
     } while (validaCPF(cpf) == false);
 
     return cpf;
+}
+
+int obtemMesAniversario() {
+    int mes;
+
+    do {
+        printf("Mês (1: jan.. 12: dez): ");
+        scanf("%d", &mes);
+    } while (mes < 1 || mes > 12);
+
+    return mes;
 }
 
 Semestre obtemSemestre() {

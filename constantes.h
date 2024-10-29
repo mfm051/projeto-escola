@@ -15,6 +15,7 @@
 #define ALUNO 1
 #define PROFESSOR 2
 #define DISCIPLINA 3
+#define ANIVERSARIANTES 4
 
 /* Opções de módulo */
 #define VOLTAR 0
