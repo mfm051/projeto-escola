@@ -151,6 +151,10 @@ int main()
                                     listarProfessoresAlfabeticamente(qtdProfessores, professores);
                                     break;
                                 }
+                                case LISTAGEMNASCIMENTO: {
+                                    listarProfessoresPorNascimento(qtdProfessores, professores);
+                                    break;
+                                }
                                 default:
                                     break;
                             }

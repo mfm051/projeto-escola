@@ -1,4 +1,5 @@
 #include "professor.h"
+#include "data.h"
 #include "interface.h"
 
 #include <stdio.h>
@@ -66,6 +67,26 @@ void listarProfessoresAlfabeticamente(int qtdProfessores, Professor professores[
         for (int j = 0; j < qtdProfessores - 1 - i; j++) {
 
             if (strcmp(copiaProfessores[j].nome, copiaProfessores[j + 1].nome) > 0) {
+                temp = copiaProfessores[j];
+                copiaProfessores[j] = copiaProfessores[j + 1];
+                copiaProfessores[j + 1] = temp;
+            }
+        }
+    }
+
+    listarProfessores(qtdProfessores, copiaProfessores);
+}
+
+void listarProfessoresPorNascimento(int qtdProfessores, Professor professores[]) {
+    Professor copiaProfessores[qtdProfessores];
+    for (int i = 0; i < qtdProfessores; i++)
+        copiaProfessores[i] = professores[i];
+
+    Professor temp;
+    for (int i = 0; i < qtdProfessores; i++) {
+        for (int j = 0; j < qtdProfessores - 1 - i; j++) {
+
+            if (comparaData(copiaProfessores[j].data_nascimento, copiaProfessores[j + 1].data_nascimento) > 0) {
                 temp = copiaProfessores[j];
                 copiaProfessores[j] = copiaProfessores[j + 1];
                 copiaProfessores[j + 1] = temp;
