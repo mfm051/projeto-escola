@@ -184,10 +184,8 @@ int main()
                 break;
             }
             case DISCIPLINA: {
-
                 printf("\nMódulo Disciplina\n");
 
-                int opcaoDisciplina;
                 int sairDisciplina = false;
 
                 while (!sairDisciplina) {
@@ -237,24 +235,17 @@ int main()
                         }
 
                         case 5 /*Pessoas matriculadas*/: {
-
-                            int opcao;
                             int sairMatriculados = false;
 
                             while (!sairMatriculados){
-
-                                opcao = obtemOpcaoMatriculados ();
-
-                                switch (opcao){
-
-                                    case 0: /*Voltar*/ {
+                                switch (obtemOpcaoMatriculados ()){
+                                    case VOLTAR: {
                                         sairMatriculados = true;
                                         break;
                                     }
 
-                                    case 1: /*Matricular aluno*/ {
-                                        int matriculado = matricularAlunoDisciplina (disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
-                                        if (matriculado) {
+                                    case MATRICULARALUNO: {
+                                        if (matricularAlunoDisciplina (disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados)) {
                                             qtdAlunosMatriculados++;
                                             printf("Aluno cadastrado com sucesso!\n");
                                         }
@@ -263,32 +254,25 @@ int main()
                                         break;
                                     }
 
-                                    case 2: /*Excluir aluno*/ {
-                                        int excluido = excluirAlunoDisciplina(disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
-                                        if (excluido) {
+                                    case EXCLUIRALUNO: {
+                                        if (excluirAlunoDisciplina(disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados))
                                             printf("Aluno excluído com sucesso!\n");
-                                        }
                                         else
                                             printf("Operação não realizada!\n");
                                         break;
                                     }
 
-                                    case 3: /*Matrículas*/ {
-                                        
-                                        int opcaoListar;
+                                    case MATRICULAS: {
                                         int sairListarMatriculados = false;
 
                                         while (!sairListarMatriculados){
-
-                                            opcaoListar = obtemOpcaoListarMatriculados ();
-
-                                            switch (opcaoListar){
+                                            switch (obtemOpcaoListarMatriculados()){
 
                                                 case 0: /*Voltar*/ {
                                                     sairListarMatriculados = true;
                                                     break;
                                                 }
-                                                
+
                                                 case 1: /*Listar uma disciplina*/ {
                                                     listarDisciplinaAlunos (qtdDisciplinas, disciplinas);
                                                     break;

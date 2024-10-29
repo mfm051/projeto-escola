@@ -25,6 +25,10 @@
 #define ATUALIZAR 3
 #define EXCLUIR 4
 
+/* Opções para o módulo disciplina */
+#define MATRICULARALUNO 1
+#define EXCLUIRALUNO 2
+#define MATRICULAS 3
 
 /* Opções listagem */
 #define LISTAGEMGERAL 1
