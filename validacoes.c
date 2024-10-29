@@ -2,14 +2,25 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <stdlib.h>
+#include <ctype.h>
 
-int validaMatricula(int matricula) {
-    if (matricula <= 0) {
-        printf("Matrícula inválida\n");
-        return false;
+int validaMatricula(const char *entrada) {
+    for (int i = 0; i < strlen(entrada); i++) {
+        if (!isdigit(entrada[i])) {
+            printf("A matrícula deve conter apenas números!\n");
+            return 0;
+        }
     }
 
-    return true;
+    int matricula = atoi(entrada);
+    
+    if (matricula <= 0) {
+        printf("Matrícula inválida!\n");
+        return 0;  
+    }
+
+    return matricula; 
 }
 
 int validaCodigo(int codigo) {

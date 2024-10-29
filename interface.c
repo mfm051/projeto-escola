@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 int obtemModulo() {
     int opcao;
@@ -53,12 +54,14 @@ int obtemOpcaoListagem() {
 }
 
 int obtemMatricula() {
+    char entrada[10];
     int matricula;
 
     do {
         printf("Matrícula: ");
-        scanf("%d", &matricula);
-    } while (validaMatricula(matricula) == false);
+        scanf("%9s", entrada);  // Lê a entrada como uma string com limite de 9 caracteres
+        matricula = validaMatricula(entrada);  
+    } while (matricula == 0);  
 
     return matricula;
 }
