@@ -17,6 +17,8 @@ int main()
     int qtdProfessores = 0;
     int qtdDisciplinas = 0;
     int qtdAlunosMatriculados = 0;
+    int alunosMatriculados = 0;
+    int professorResponsavel = 0;
 
     printf("\nPROJETO ESCOLA\n");
 
@@ -255,7 +257,6 @@ int main()
                                     case 2: /*Excluir aluno*/ {
                                         int excluido = excluirAlunoDisciplina(disciplinas, qtdDisciplinas, alunos, qtdAlunos, qtdAlunosMatriculados);
                                         if (excluido) {
-                                            qtdAlunosMatriculados--;
                                             printf("Aluno excluído com sucesso!\n");
                                         }
                                         else
@@ -263,7 +264,7 @@ int main()
                                         break;
                                     }
 
-                                    case 3: /*Listar matriculados*/ {
+                                    case 3: /*Matrículas*/ {
                                         
                                         int opcaoListar;
                                         int sairListarMatriculados = false;
@@ -280,15 +281,18 @@ int main()
                                                 }
                                                 
                                                 case 1: /*Listar uma disciplina*/ {
-
+                                                    listarDisciplinaAlunos (qtdDisciplinas, disciplinas);
+                                                    break;
                                                 }
 
                                                 case 2: /*Lista de alunos matriculados em menos de 3 disciplinas*/{
-
+                                                    listarAlunosMenosDeTresDisciplinas(qtdDisciplinas, disciplinas, alunos, qtdAlunos);
+                                                    break;
                                                 }
 
                                                 case 3: /*Lista de Disciplinas, com nome do professor, que extrapolam 40 vagas*/{
-                                                    
+                                                    listarDisciplinasExtrapolandoVagas(qtdDisciplinas, disciplinas);
+                                                    break;
                                                 }
 
                                                 default:
