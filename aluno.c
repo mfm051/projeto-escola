@@ -56,6 +56,19 @@ void listarAlunosPorSexo(char sexo, int qtdAlunos, Aluno alunos[]) {
     }
 }
 
+void listarAlunosPorBuscaNome(char busca[], int qtdAlunos, Aluno alunos[]) {
+    for (int i = 0; i < qtdAlunos; i++) {
+        if (alunos[i].ativo && strstr(alunos[i].nome, busca) != NULL) {
+            printf("Matrícula: %d\n", alunos[i].matricula);
+            printf("Nome: %s\n", alunos[i].nome);
+            printf("Sexo: %c\n", alunos[i].sexo);
+            printf("Data de nascimento: %d/%d/%d\n", alunos[i].data_nascimento.dia, alunos[i].data_nascimento.mes, alunos[i].data_nascimento.ano);
+            printf("CPF: %s\n", alunos[i].cpf);
+            printf("\n");
+        }
+    }
+}
+
 void listarAlunosAlfabeticamente(int qtdAlunos, Aluno alunos[]) {
     Aluno copiaAlunos[qtdAlunos];
     for (int i = 0; i < qtdAlunos; i++)

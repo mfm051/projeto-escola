@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
 
 int main()
 {
@@ -323,6 +324,17 @@ int main()
             case ANIVERSARIANTES: {
                 int mes = obtemMesAniversario();
                 listarAniversariantes(mes, qtdAlunos, alunos, qtdProfessores, professores);
+                break;
+            }
+            case BUSCA: {
+                char busca[MAXNOMEPESSOA];
+                strcpy(busca, obtemNome(MAXNOMEPESSOA));
+
+                printf("Alunos:\n");
+                listarAlunosPorBuscaNome(busca, qtdAlunos, alunos);
+
+                printf("Professores:\n");
+                listarProfessoresPorBuscaNome(busca, qtdProfessores, professores);
                 break;
             }
             default:

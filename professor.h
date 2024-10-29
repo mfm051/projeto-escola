@@ -21,6 +21,7 @@ void listarProfessores (int qtdProfessores, Professor professores[]);
 void listarProfessoresPorSexo (char sexo, int qtdProfessores, Professor professores[]);
 void listarProfessoresAlfabeticamente(int qtdProfessores, Professor professores[]);
 void listarProfessoresPorNascimento(int qtdProfessores, Professor professores[]);
+void listarProfessoresPorBuscaNome(char busca[], int qtdProfessores, Professor professores[]);
 int atualizarProfessor (int qtdProfessores, Professor professores[]);
 int excluirProfessor (int qtdProfessores, Professor professores[]);
 

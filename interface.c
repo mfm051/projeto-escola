@@ -14,6 +14,7 @@ int obtemModulo() {
     printf("2: professor\n");
     printf("3: disciplina\n");
     printf("4: aniversariantes\n");
+    printf("5: busca\n");
 
     scanf("%d", &opcao);
 

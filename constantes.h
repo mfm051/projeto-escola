@@ -16,6 +16,7 @@
 #define PROFESSOR 2
 #define DISCIPLINA 3
 #define ANIVERSARIANTES 4
+#define BUSCA 5
 
 /* Opções de módulo */
 #define VOLTAR 0
