@@ -8,4 +8,6 @@ typedef struct
     int ano;
 } Data;
 
+int comparaData(Data a, Data b);
+
 #endif

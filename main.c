@@ -75,6 +75,10 @@ int main()
                                     listarAlunosAlfabeticamente(qtdAlunos, alunos);
                                     break;
                                 }
+                                case LISTAGEMNASCIMENTO: {
+                                    listarAlunosPorNascimento(qtdAlunos, alunos);
+                                    break;
+                                }
                                 default:
                                     break;
                             }
