@@ -135,8 +135,10 @@ int encontraMatriculaAluno(int qtdAlunos, Aluno alunos[], int matricula) {
     int posicaoAluno = -1;
 
     for (int i = 0; i < qtdAlunos; i++) {
-        if (alunos[i].matricula == matricula && alunos[i].ativo)
+        if (alunos[i].matricula == matricula && alunos[i].ativo) {
             posicaoAluno = i;
+            break;
+        }
     }
 
     return posicaoAluno;
