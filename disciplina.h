@@ -35,5 +35,6 @@ int matricularAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Al
 int excluirAlunoDisciplina (Disciplina disciplinas [], int qtdDisciplinas, Aluno alunos[], int qtdAlunos, int qtdAlunosMatriculados);
 void listarDisciplinaAlunos (int qtdDisciplinas, Disciplina disciplinas[]);
 void listarAlunosMenosDeTresDisciplinas(int qtdDisciplinas, Disciplina disciplinas[], Aluno alunos[], int qtdAlunos);
+void listarDisciplinasExtrapolandoVagas(int qtdDisciplinas, Disciplina disciplinas[]);
 
 #endif

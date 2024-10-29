@@ -302,6 +302,29 @@ void listarAlunosMenosDeTresDisciplinas(int qtdDisciplinas, Disciplina disciplin
     }
 }
 
+void listarDisciplinasExtrapolandoVagas(int qtdDisciplinas, Disciplina disciplinas[]){
+
+    if (qtdDisciplinas == 0) {
+        printf("Não há disciplinas cadastradas!\n");
+        return;
+    }
+
+    printf("\nDisciplinas que extrapolam 40 vagas:\n");
+    int encontrou = false; 
+    for (int i = 0; i < qtdDisciplinas; i++) {
+        if (disciplinas[i].qtdAlunosMatriculados > 40) {
+            printf("Código: %d\n", disciplinas[i].codigo);
+            printf("Nome: %s\n", disciplinas[i].nome);
+            printf("Professor responsável: %s\n\n", disciplinas[i].professorResponsavel.nome);
+            encontrou = true; 
+        }
+    }
+
+    if (!encontrou) {
+        printf("Nenhuma disciplina extrapolando 40 vagas foi encontrada.\n");
+    }
+}
+
 //Funções auxiliares
 int encontraCodigoDisciplina(int codigo, int qtdDisciplinas, Disciplina disciplinas[]){
 

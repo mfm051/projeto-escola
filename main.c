@@ -283,7 +283,8 @@ int main()
                                                 }
 
                                                 case 3: /*Lista de Disciplinas, com nome do professor, que extrapolam 40 vagas*/{
-                                                    
+                                                    listarDisciplinasExtrapolandoVagas(qtdDisciplinas, disciplinas);
+                                                    break;
                                                 }
 
                                                 default:
