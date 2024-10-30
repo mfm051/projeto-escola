@@ -68,21 +68,15 @@ int validaCPF(char cpf[]) {
 
 int validaSemestre(int ano, int periodo){
 
-    if (ano <= 0) {
-        printf("Semestre inválido!\n");
+    if (ano < 1900 || ano > 3000) {
+        printf("Ano inválido!\n");
         return false;
     }
 
-    if (periodo <= 0) {
-        printf("Semestre inválido!\n");
+    if (periodo != 1 && periodo != 2) {
+        printf("Período inválido!\n");
         return false;
     }
-
-    if ((periodo < 1) || (periodo > 2)) {
-        printf("Semestre inválido!\n");
-        return false;
-    }
-
 
     return true;
 }

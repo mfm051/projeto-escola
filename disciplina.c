@@ -38,7 +38,7 @@ int cadastrarDisciplina(int qtdDisciplinas, Disciplina disciplinas[], int maxDis
 
     disciplinas[qtdDisciplinas].codigo = codigo;
     strcpy(disciplinas[qtdDisciplinas].nome, obtemNome(MAXNOMEDISCIPLINA));
-    disciplinas[qtdDisciplinas].semestreAtual = obtemSemestre();
+    atualizaSemestre(&disciplinas[qtdDisciplinas].semestreAtual);
 
     // Cadastro do professor responsável pela disciplina
     printf("\nProfessor responsável:\n");
