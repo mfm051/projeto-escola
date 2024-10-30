@@ -86,3 +86,13 @@ int validaSemestre(int ano, int periodo){
 
     return true;
 }
+
+int validaNome (char nome[]) {
+    if (strlen(nome) < 4) /* Assumindo 5 caracteres como um tamanho mínimo para um nome */
+    {
+        printf("Nome muito curto!\n");
+        return false;
+    }
+
+    return true;
+}

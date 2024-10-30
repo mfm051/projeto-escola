@@ -90,10 +90,12 @@ char *obtemNome(int maxChars) {
     char *nome;
     nome = (char *) malloc ((maxChars + 1) * sizeof(char));
 
-    printf("Nome: ");
-    fgetc(stdin);
-    fgets(nome, maxChars, stdin);
-    nome[strlen(nome) - 1] = 0;
+    do {
+        printf("Nome: ");
+        fgetc(stdin);
+        fgets(nome, maxChars, stdin);
+        nome[strlen(nome) - 1] = 0;
+    } while (validaNome(nome) == false);
 
     return nome;
 }
