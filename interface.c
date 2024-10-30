@@ -55,26 +55,24 @@ int obtemOpcaoListagem() {
 
 int obtemMatricula() {
     char entrada[10];
-    int matricula;
 
     do {
         printf("Matrícula: ");
         scanf("%9s", entrada);  // Lê a entrada como uma string com limite de 9 caracteres
-        matricula = validaMatricula(entrada);  
-    } while (matricula == 0);  
+    } while (validaMatricula(entrada) == false);
 
-    return matricula;
+    return atoi(entrada);
 }
 
 int obtemCodigo() {
-    int codigo;
+    char entrada[10];
 
     do {
         printf("Código: ");
-        scanf("%d", &codigo);
-    } while (validaCodigo(codigo) == false);
+        scanf("%9s", &entrada); // Lê a entrada como uma string com limite de 9 caracteres
+    } while (validaCodigo(entrada) == false);
 
-    return codigo;
+    return atoi(entrada);
 }
 
 char obtemSexo() {

@@ -9,23 +9,28 @@ int validaMatricula(const char *entrada) {
     for (int i = 0; i < strlen(entrada); i++) {
         if (!isdigit(entrada[i])) {
             printf("A matrícula deve conter apenas números!\n");
-            return 0;
+            return false;
         }
     }
 
-    int matricula = atoi(entrada);
-    
-    if (matricula <= 0) {
-        printf("Matrícula inválida!\n");
-        return 0;  
+    if (atoi(entrada) == 0) {
+        printf("Matrícula não pode ser nula!\n");
+        return false;
     }
 
-    return matricula; 
+    return true;
 }
 
-int validaCodigo(int codigo) {
-    if (codigo <= 0) {
-        printf("Código inválido\n");
+int validaCodigo(const char *entrada) {
+    for (int i = 0; i < strlen(entrada); i++) {
+        if (!isdigit(entrada[i])) {
+            printf("O código deve conter apenas números!\n");
+            return false;
+        }
+    }
+
+    if (atoi(entrada) == 0) {
+        printf("Código não pode ser nulo!\n");
         return false;
     }
 
