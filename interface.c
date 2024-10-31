@@ -69,7 +69,7 @@ int obtemCodigo() {
 
     do {
         printf("Código: ");
-        scanf("%9s", &entrada); // Lê a entrada como uma string com limite de 9 caracteres
+        scanf("%9s", entrada); // Lê a entrada como uma string com limite de 9 caracteres
     } while (validaCodigo(entrada) == false);
 
     return atoi(entrada);
